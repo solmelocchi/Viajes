@@ -416,7 +416,7 @@ footer strong{color:rgba(240,235,224,.80)}
     </div>
     <div class="modal-tabs">
       <button class="tab-btn active" onclick="switchTab('itinerario',this)"> Itinerario</button>
-      <button class="tab-btn" onclick="switchTab('costos',this)">💸 Costos</button>
+      <button class="tab-btn" onclick="switchTab('costos',this)"> Costos</button>
       <button class="tab-btn" onclick="switchTab('alojamiento',this)"> Alojamiento</button>
       <button class="tab-btn" onclick="switchTab('comida',this)"> Comida</button>
       <button class="tab-btn" onclick="switchTab('salidas',this)"> Salidas</button>
@@ -435,142 +435,153 @@ footer strong{color:rgba(240,235,224,.80)}
 /* ══════════ DATA ══════════════════════════════════════════ */
 const trips=[
   {id:"vina",category:"mitad",destination:"Viña del Mar",country:"Chile 🇨🇱",emoji:"🌊",
-   dates:"Julio / Agosto · 4 días",
+   dates:"30 Jun – 4 Jul 2026 · 4 días",
    image:"img-vina.png",
-   tags:["Playa","Ciudad","Paseos"],pricePerPerson:"$280.000",
+   tags:["Playa","Ciudad","Paseos"],pricePerPerson:"USD 190–260",
    itinerary:[
-     {day:1,title:"Llegada y Valparaíso",desc:"Llegamos a Santiago y tomamos bus a Viña (~1h30). Tarde en los cerros de Valparaíso.",activities:["Cerro Alegre","Graffitis","Cena en el puerto"]},
-     {day:2,title:"Playa y Relax",desc:"Mañana de playa. Tarde: casino, Av. Perú y helados.",activities:["Playa principal","Av. Perú","Casino","Helados Bavaria"]},
-     {day:3,title:"Jardín y Cultura",desc:"Jardín Botánico, Castillo Wulff. Noche en el centro.",activities:["Jardín Botánico","Castillo Wulff","Plaza Sucre"]},
+     {day:1,title:"Llegada y Valparaíso",desc:"Llegamos en auto desde Mendoza (~6hs). Tarde explorando los cerros y el puerto de Valparaíso.",activities:["Cerro Alegre","Graffitis","Cena en el puerto"]},
+     {day:2,title:"Playa y Relax",desc:"Mañana de playa en Reñaca. Tarde libre: casino, Av. Perú y helados.",activities:["Playa Reñaca","Av. Perú","Casino","Helados Bavaria"]},
+     {day:3,title:"Jardín y Cultura",desc:"Jardín Botánico, Castillo Wulff. Noche en el centro de Viña.",activities:["Jardín Botánico","Castillo Wulff","Plaza Sucre"]},
      {day:4,title:"Regreso",desc:"Feria artesanal y vuelta a Mendoza.",activities:["Feria artesanal","Souvenirs","🏠"]}
    ],
-   costs:{total:"$280.000",totalNote:"por persona · estimado",items:[
-     {,name:"Vuelo Mendoza – Santiago",note:"Ida y vuelta",amount:"$95.000"},
-     {icon:"",name:"Bus Santiago – Viña",note:"Ida y vuelta",amount:"$18.000"},
-     {icon:"🏠",name:"Alojamiento 3 noches",note:"Por persona",amount:"$90.000"},
-     {icon:"🍔",name:"Comida",note:"Estimado x3 días",amount:"$45.000"},
-     {icon:"🎡",name:"Actividades y salidas",note:"Estimado",amount:"$32.000"}
+   costs:{total:"USD 190 – 260",totalNote:"por persona · sin nafta",items:[
+     {icon:"🚗",name:"Nafta (en auto)",note:"2.5 tanques por auto · por persona",amount:"$40.000 ARS"},
+     {icon:"🏠",name:"Alojamiento (3 noches)",note:"Opción barata USD 83 · cómoda USD 123",amount:"USD 83–123"},
+     {icon:"🍽️",name:"Comida (4 días)",note:"Económico USD 40 · completo USD 100",amount:"USD 40–100"},
+     {icon:"🎡",name:"Salidas y actividades",note:"Estimado",amount:"USD 30–50"}
    ]},
    lodgings:[
-     {name:"Apart Hotel Las Dalias",badge:"book",loc:"📍 A 2 cuadras de la playa",desc:"Departamento cómodo con cocina, terraza y estacionamiento.",price:"$42.000",priceNote:"/ persona / noche",link:"https://www.booking.com",img:"https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=260&q=80"},
-     {name:"Airbnb Casa Viña",badge:"air",loc:"📍 Barrio Forestal",desc:"Casa completa para 10 personas, living amplio, asado y jardín.",price:"$35.000",priceNote:"/ persona / noche",link:"https://www.airbnb.com",img:"https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=260&q=80"}
+     {name:"Airbnb Reñaca · USD 83/persona",badge:"air",loc:"📍 Reñaca, Valparaíso",desc:"USD 828 las 4 noches entre 10. USD 82.8 por persona. Vista al mar, bien ubicado.",price:"USD 83",priceNote:"/ persona · 4 noches",link:"https://www.airbnb.com.ar/rooms/1187780840706255196?adults=10&check_in=2026-06-30&check_out=2026-07-04",img:"img-vina.png"},
+     {name:"Airbnb Reñaca · USD 97/persona",badge:"air",loc:"📍 Reñaca, Valparaíso",desc:"USD 977 las 4 noches entre 10. USD 97 por persona. Cómodo para el grupo.",price:"USD 97",priceNote:"/ persona · 4 noches",link:"https://www.airbnb.com.ar/rooms/16557229?adults=10&check_in=2026-06-30&check_out=2026-07-04",img:"img-vina.png"},
+     {name:"Airbnb Reñaca · USD 123/persona",badge:"air",loc:"📍 Reñaca, Valparaíso",desc:"USD 1.230 las 4 noches entre 10. USD 123 por persona. La opción más cómoda.",price:"USD 123",priceNote:"/ persona · 4 noches",link:"https://www.airbnb.com.ar/rooms/1287271361677496289?adults=10&check_in=2026-06-30&check_out=2026-07-04",img:"img-vina.png"}
    ],
-   food:{budget:"~$12.000–15.000 por persona/día",places:["Divinus – mediterránea frente al mar","El Pimentón – cazuelas típicas","Feria Artesanal – desayunos económicos","Heladería Bavaria – clásico indispensable","Mercado del Mar – mariscos frescos"],tip:"💡 El Jumbo queda cerca del centro. Ideal para comprar desayunos y picadas para la playa y ahorrar plata."},
-   nights:{places:["Divinus Club – boliche frente al mar","Café Journal – música en vivo","The Clinic – cervecería artesanal","Casino de Viña del Mar 🎰"],tip:"💡 El casino tiene entrada libre. Ideal para una noche diferente aunque no apostés."}
+   food:{budget:"USD 40–100 por persona (4 días)",places:["Divinus – mediterránea frente al mar","El Pimentón – cazuelas típicas","Feria Artesanal – desayunos económicos","Heladería Bavaria – clásico indispensable","Mercado del Mar – mariscos frescos"],tip:"💡 El Jumbo queda cerca del centro, ideal para desayunos y picadas de playa económicas. Salir a comer en grupos sale entre 40 y 100 USD totales por 4 días."},
+   nights:{places:["Divinus Club – boliche frente al mar","Café Journal – música en vivo","The Clinic – cervecería artesanal","Casino de Viña del Mar 🎰"],tip:"💡 El casino tiene entrada libre. Ideal para una noche diferente aunque no apostés. En Reñaca hay varios bares sobre la costanera."}
   },
   {id:"norte",category:"mitad",destination:"Norte Argentino",country:"Argentina 🇦🇷",emoji:"🏜️",
-   dates:"Julio / Agosto · 4 días",
+   dates:"30 Jul – 4 Ago 2026 · 5 noches",
    image:"img-norte.png",
-   tags:["Cultura","Naturaleza","Salinas"],pricePerPerson:"$210.000",
+   tags:["Cultura","Naturaleza","Salinas"],pricePerPerson:"$425.000 ARS",
    itinerary:[
-     {day:1,title:"Llegada a Salta",desc:"Vuelo directo. Centro histórico: Cabildo, Catedral y Peatonal Alberdi.",activities:["Cabildo","Catedral","Peña folclórica"]},
-     {day:2,title:"Salinas Grandes",desc:"Excursión a las Salinas (3.400 msnm). Las fotos más épicas del viaje.",activities:["Salinas Grandes","Purmamarca","Cerro 7 colores"]},
-     {day:3,title:"Quebrada de Humahuaca",desc:"Patrimonio UNESCO. Tilcara y el Pucará.",activities:["Pucará de Tilcara","Museo folklórico","Artesanías"]},
-     {day:4,title:"Cafayate",desc:"Bodegas, torrontés y la Quebrada de las Conchas.",activities:["Bodega Nanni","Garganta del Diablo","🏠"]}
+     {day:1,title:"Llegada a Salta",desc:"Vuelo directo Mendoza–Salta. Centro histórico: Cabildo, Catedral y Peatonal Alberdi.",activities:["Cabildo","Catedral","Peña folclórica"]},
+     {day:2,title:"Salinas Grandes y Purmamarca",desc:"Excursión 12hs: Quebrada de Humahuaca, Purmamarca y sus 7 colores (4.150 msnm), Cuesta del Lipán y las Salinas Grandes.",activities:["Salinas Grandes","Cerro 7 Colores","Cuesta del Lipán","Mercado artesanal"]},
+     {day:3,title:"Quebrada de Humahuaca",desc:"Día completo por la Quebrada (Patrimonio UNESCO): Yala, Volcán, Tumbaya, Purmamarca, Tilcara, Huacalera, Uquía y Humahuaca.",activities:["Pucará de Tilcara","Trópico de Capricornio","Artesanías","Iglesia Uquía"]},
+     {day:4,title:"Cafayate y los Valles Calchaquíes",desc:"Quebrada de las Conchas (Anfiteatro, Garganta del Diablo), bodegas de Cafayate y degustación de Torrontés.",activities:["Garganta del Diablo","Anfiteatro","Bodega Etchart","Torrontés"]},
+     {day:5,title:"Día libre en Salta",desc:"Mercado central, empanadas, compras. Vuelo de vuelta a Mendoza.",activities:["Mercado Central","Empanadas","Souvenirs","🏠"]}
    ],
-   costs:{total:"$210.000",totalNote:"por persona · estimado",items:[
-     {icon:"✈️",name:"Vuelo Mendoza – Salta",note:"Ida y vuelta",amount:"$80.000"},
-     {icon:"🚐",name:"Excursiones y traslados",note:"Salinas + Quebrada + Cafayate",amount:"$40.000"},
-     {icon:"🏠",name:"Alojamiento 3 noches",note:"Por persona",amount:"$45.000"},
-     {icon:"🍔",name:"Comida",note:"Estimado x3 días",amount:"$30.000"},
-     {icon:"🎡",name:"Actividades y salidas",note:"Estimado",amount:"$15.000"}
+   costs:{total:"$425.000 – $641.000 ARS",totalNote:"por persona · paquete completo (vuelo + hotel)",items:[
+     {icon:"📦",name:"Paquete: Entre Cerros Apart + Vuelo",note:"MDZ→SLA 09:45 directo · 5 noches",amount:"$425.667 ARS"},
+     {icon:"📦",name:"Paquete: Tierras del Norte + Vuelo",note:"MDZ→SLA 09:45 directo · 5 noches",amount:"$641.063 ARS"},
+     {icon:"🥾",name:"Excursión Salinas Grandes",note:"12hs · cancelación gratis · traslado incluido",amount:"$55.900 ARS"},
+     {icon:"🍷",name:"Excursión Cafayate",note:"12hs · cancelación gratis · traslado incluido",amount:"$41.921 ARS"},
+     {icon:"🏔️",name:"Excursión Quebrada Humahuaca",note:"12hs · cancelación gratis · traslado incluido",amount:"$52.001 ARS"},
+     {icon:"🍽️",name:"Comida",note:"$10.000–$50.000 x día según restaurante",amount:"~$100.000–200.000 ARS"}
    ]},
    lodgings:[
-     {name:"Hostel Salta Colonial",badge:"book",loc:"📍 Centro histórico",desc:"Patio colonial, ambiente festivo. Desayuno incluido.",price:"$18.000",priceNote:"/ persona / noche",link:"https://www.booking.com",img:"https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=260&q=80"},
-     {name:"Airbnb Casa en Tilcara",badge:"air",loc:"📍 Tilcara, Quebrada",desc:"Casa rústica con patio y vista a los cerros. Fogón para las noches frías.",price:"$22.000",priceNote:"/ persona / noche",link:"https://www.airbnb.com",img:"https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=260&q=80"}
+     {name:"Entre Cerros Apart ★★★★ — 9.1",badge:"book",loc:"📍 Salta Capital · 5 noches",desc:"Paquete vuelo + hotel. MDZ→SLA 09:45 directo, vuelta SLA→MDZ 20:55. Final 8 personas $3.405.336 ARS.",price:"$425.667",priceNote:"/ persona · vuelo + hotel",link:"https://www.despegar.com.ar/trip/accommodations/detail/PCc7106d156def404ebdd8223b81d4b2da29632074?tripItem=H0&hotel_product_id=H0&flow=FH&searchParams=RkgvQ0lUXzQ0NTEvQ0lUXzY4NDYvMjAyNi0wNy0zMC8yMDI2LTA4LTA0L0NJVF82ODQ2LzIwMjYtMDctMzAvMjAyNi0wOC0wNC81ITN8SDA6SCxGMTpGLFhTOlhT&stepNum=0",img:"img-norte.png"},
+     {name:"Tierras del Norte ★★★ — 9.1",badge:"book",loc:"📍 Salta Capital · 5 noches",desc:"Paquete vuelo + hotel. MDZ→SLA 09:45 directo. Ahorrás $433.448 vs precio original. Final 8 personas $5.128.504 ARS.",price:"$641.063",priceNote:"/ persona · vuelo + hotel",link:"https://www.despegar.com.ar/trip/accommodations/detail/PCc4f2bc4ea5c34553911bb687fd37183329632077?tripItem=H0&hotel_product_id=H0&flow=FH&searchParams=RkgvQ0lUXzQ0NTEvQ0lUXzY4NDYvMjAyNi0wNy0zMC8yMDI2LTA4LTA0L0NJVF82ODQ2LzIwMjYtMDctMzAvMjAyNi0wOC0wNC81ITN8SDA6SCxGMTpGLFhTOlhT&stepNum=0",img:"img-norte.png"}
    ],
-   food:{budget:"~$8.000–12.000 por persona/día",places:["La Vieja Estación – empanadas salteñas","El Solar del Convento – cocina norteña","Mercado Central – locro y humitas","Bodegas Etchart – empanada + vino","Las Escaleras – vista al valle"],tip:"💡 Las empanadas salteñas son las mejores del país. Probalas en el Mercado Central, son económicas y riquísimas."},
-   nights:{places:["Peña La Casona del Molino – folclore en vivo","Macondo Bar – cocktails en la plaza","Boliche La Vieja Usina – el más animado"],tip:"💡 Las peñas folclóricas son una experiencia única aunque no seas fanática del folklore."}
+   food:{budget:"$10.000–$50.000 por persona/día",places:["Doña Salta – clásico turístico, empanadas y locro en ambiente colonial 🧡","La Casona del Molino – peña folklórica en vivo, comida casera y guitarreada 🎸","Aires Caseros – moderno con comida regional, muy buena calidad","El Mesón Restaurant & Bar – más elegante, para una noche arreglada 🍷","José Balcarce bistró – gourmet, platos elaborados","La Güemesiana – ambiente joven, abierto hasta tarde, perfecto para seguir saliendo","Patio San Francisco – patio gastronómico, varias opciones para cada una"],tip:"💡 No se vayan sin probar: empanadas salteñas, locro, humita, tamales, cabrito y vino Torrontés. Es lo típico de la región y está muy bueno."},
+   nights:{places:["La Casona del Molino – peña folklórica con música en vivo 🎵","Macondo Bar – cocktails con vista a la plaza","Boliche La Vieja Usina – el más animado del centro","La Güemesiana – joven y abierto hasta tarde 🍻"],tip:"💡 Las peñas folklóricas son una experiencia única aunque no seas fanática. El ambiente, la música y la comida lo hacen imperdible."}
   },
-  {id:"brasil",category:"vacaciones",destination:"Brasil",country:"Brasil 🇧🇷",emoji:"🌴",
-   dates:"Enero · 1ª quincena · 10 días",
+  {id:"brasil",category:"vacaciones",destination:"Brasil · Río",country:"Brasil 🇧🇷",emoji:"🌴",
+   dates:"4 – 14 Ene 2027 · 10 noches",
    image:"img-brasil.png",
-   tags:["Playa","Fiesta","Electrónica"],pricePerPerson:"$850.000",
+   tags:["Playa","Cultura","Fiesta"],pricePerPerson:"USD 1.550–1.700",
    itinerary:[
-     {day:1,title:"Llegada a Floripa",desc:"Vuelo a Florianópolis. Primer atardecer en la isla.",activities:["Check-in","Centro histórico","Atardecer"]},
-     {day:2,title:"Praia Mole y Joaquina",desc:"Las playas más famosas. Noche en Lagoa da Conceição.",activities:["Praia Mole","Joaquina","Lagoa"]},
-     {day:3,title:"Jurerê Internacional",desc:"Beach clubs, música y el sunset más instagrameable.",activities:["Jurerê Intl.","Beach club","Sunset"]},
-     {day:4,title:"Bombinhas",desc:"Aguas transparentes para snorkeling.",activities:["Snorkeling","Playa Bombas","Barco"]},
-     {day:5,title:"Día libre Floripa",desc:"Santo Antônio de Lisboa y feria de artesanías.",activities:["Sto. Antônio","Feria","Relax"]},
-     {day:6,title:"Balneário Camboriú",desc:"La Las Vegas del sur. Bond Bond y teleférico.",activities:["Teleférico","BC","Noche"]},
-     {day:7,title:"Praia de Laranjeiras",desc:"Agua verde esmeralda. Tarde en el shopping.",activities:["Laranjeiras","Barco","Shopping"]},
-     {day:8,title:"Bond Bond Night",desc:"El boliche más famoso de Latinoamérica.",activities:["Pre-party","Bond Bond","Amanecer"]},
-     {day:9,title:"Último día",desc:"Último sol, água de coco y cena de cierre.",activities:["Playa","Souvenirs","Cena grupal"]},
-     {day:10,title:"Regreso",desc:"Transfer y vuelta a casa.",activities:["Transfer","Aeropuerto","🏠"]}
+     {day:1,title:"Llegada a Río de Janeiro",desc:"Vuelo desde Mendoza. Check-in en Barra da Tijuca o Ipanema. Primera noche en el barrio.",activities:["Check-in","Caminata costera","Cena en el barrio"]},
+     {day:2,title:"Cristo Redentor y Pan de Azúcar",desc:"Tour de día completo: Cristo Redentor en el Corcovado, Maracaná, Sambódromo, Escalera Selarón y Pan de Azúcar (220m sobre el mar).",activities:["Cristo Redentor","Maracaná","Escalera Selarón","Pan de Azúcar"]},
+     {day:3,title:"Ipanema y Copacabana",desc:"Las playas más icónicas del mundo. Tarde libre, shopping en el Leblon.",activities:["Playa Ipanema","Copacabana","Leblon shopping"]},
+     {day:4,title:"Isla Grande y Angra dos Reis",desc:"Excursión 12hs: aguas cristalinas de Lagoa Azul, navegación por Ilha Grande, almuerzo incluido.",activities:["Lagoa Azul","Ilha Grande","Snorkeling","Almuerzo incluido"]},
+     {day:5,title:"Día libre en Río",desc:"Santa Teresa, Lapa y sus escaleras. Tarde para preparar la salida nocturna.",activities:["Santa Teresa","Lapa","Escalera Selarón","Noche"]},
+     {day:6,title:"Barra da Tijuca",desc:"La playa más larga de Río. Relax, surf y los mejores chiringuitos.",activities:["Playa Barra","Surf","Chiringuitos","Atardecer"]},
+     {day:7,title:"Búzios (excursión)",desc:"El Saint-Tropez brasileño. Playas cristalinas a 2hs de Río.",activities:["Búzios","Playas cristalinas","Pueblo pintoresco"]},
+     {day:8,title:"Día libre de compras",desc:"Shopping en el Barra Shopping y recuerdos.",activities:["Barra Shopping","Recuerdos","Playa"]},
+     {day:9,title:"Última noche en Río",desc:"Cena especial y última salida a disfrutar la ciudad.",activities:["Cena grupal","Salida nocturna","Lapa"]},
+     {day:10,title:"Regreso",desc:"Transfer al aeropuerto y vuelta a Mendoza.",activities:["Transfer","Aeropuerto GIG","🏠"]}
    ],
-   costs:{total:"$850.000",totalNote:"por persona · estimado",items:[
-     {icon:"✈️",name:"Vuelo Mendoza – Floripa",note:"Ida y vuelta",amount:"$350.000"},
-     {icon:"🚌",name:"Traslados internos",note:"Floripa–BC + excursiones",amount:"$60.000"},
-     {icon:"🏠",name:"Alojamiento 9 noches",note:"Por persona",amount:"$270.000"},
-     {icon:"🍔",name:"Comida y bebidas",note:"Estimado x9 días",amount:"$90.000"},
-     {icon:"🎡",name:"Boliche y salidas",note:"Estimado",amount:"$80.000"}
+   costs:{total:"USD 1.550–1.700",totalNote:"por persona · todo incluido",items:[
+     {icon:"✈️",name:"Vuelo MDZ → GIG (más barato)",note:"GotoGate · 1 escala · 4 ene – 14 ene",amount:"USD 545"},
+     {icon:"✈️",name:"Vuelo MDZ → GIG (Despegar)",note:"4 ene – 14 ene · lun a jue",amount:"USD 630"},
+     {icon:"🏠",name:"Alojamiento Barra da Tijuca",note:"10 noches por persona · opción barata/cómoda",amount:"USD 321–450"},
+     {icon:"🏠",name:"Alojamiento Ipanema/Leblon",note:"10 noches por persona · opción barata/cómoda",amount:"USD 379–450"},
+     {icon:"🍽️",name:"Comida + alcohol + salidas",note:"USD 70/día x 10 días",amount:"USD 700"},
+     {icon:"🎡",name:"Cristo + Pan de Azúcar + City Tour",note:"Actividad completa de día",amount:"USD 50"},
+     {icon:"🏝️",name:"Isla Grande + Angra dos Reis",note:"12hs · guía bilingüe · almuerzo incluido",amount:"USD 54"}
    ]},
    lodgings:[
-     {name:"Airbnb Casa Floripa",badge:"air",loc:"📍 Lagoa da Conceição",desc:"Casa para 10 personas a 5 min de la playa. Pileta y asador.",price:"$65.000",priceNote:"/ persona / noche",link:"https://www.airbnb.com",img:"https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=260&q=80"},
-     {name:"Apart Hotel BC Center",badge:"book",loc:"📍 Av. Atlântica, BC",desc:"Frente al mar. Vista espectacular. A 1 cuadra de Bond Bond.",price:"$78.000",priceNote:"/ persona / noche",link:"https://www.booking.com",img:"https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=260&q=80"}
+     {name:"Airbnb Barra da Tijuca · USD 321",badge:"air",loc:"📍 Barra da Tijuca, Río de Janeiro",desc:"USD 3.205 las 10 noches entre 10. USD 321 por persona. Zona moderna, cerca de las mejores playas.",price:"USD 321",priceNote:"/ persona · 10 noches",link:"https://www.airbnb.com.ar/rooms/1600806692608703746?adults=10&check_in=2027-01-04&check_out=2027-01-14",img:"img-brasil.png"},
+     {name:"Airbnb Barra da Tijuca · USD 450",badge:"air",loc:"📍 Barra da Tijuca, Río de Janeiro",desc:"USD 4.500 las 10 noches entre 10. USD 450 por persona. La opción más cómoda de la zona.",price:"USD 450",priceNote:"/ persona · 10 noches",link:"https://www.airbnb.com.ar/rooms/1549592357295102877?adults=10&check_in=2027-01-04&check_out=2027-01-14",img:"img-brasil.png"},
+     {name:"Airbnb Ipanema/Leblon · USD 379",badge:"air",loc:"📍 Leblon, Río de Janeiro",desc:"USD 3.790 las 10 noches entre 10. USD 379 por persona. En el barrio más top de Río, a pasos de la playa.",price:"USD 379",priceNote:"/ persona · 10 noches",link:"https://www.airbnb.com.ar/rooms/1453202783289515410?adults=10&check_in=2027-01-04&check_out=2027-01-14",img:"img-brasil.png"},
+     {name:"Airbnb Ipanema/Leblon · USD 450",badge:"air",loc:"📍 Leblon, Río de Janeiro",desc:"USD 4.500 las 10 noches entre 10. USD 450 por persona. Premium en el mejor barrio de Río.",price:"USD 450",priceNote:"/ persona · 10 noches",link:"https://www.airbnb.com.ar/rooms/1281155747110953966?adults=10&check_in=2027-01-04&check_out=2027-01-14",img:"img-brasil.png"}
    ],
-   food:{budget:"~$22.000–30.000 por persona/día",places:["Ostradamus – frutos del mar en Floripa","Lagosteira do Rei – lagostas y cervejas","Box 32 – food market en BC","La Taperia – tapas y caipis","Água de coco en la playa 🥥"],tip:"💡 Llevá dólares o una billetera virtual (Wise / Nubank) para no pagar comisiones al cambiar pesos."},
-   nights:{places:["Bond Bond – el mega boliche de Latinoamérica 🔥","Green Valley – festival electrónico","Jurerê Beach – sunset parties","Toca do Urso – bar reggaeton"],tip:"💡 Comprá las entradas a Bond Bond online desde Argentina para conseguir descuentos y evitar filas."}
+   food:{budget:"USD 70/día · USD 700 en total (10 días)",places:["Ostradamus – frutos del mar en Barra","Aprazível – santa teresa con vista increíble","Zazá Bistrô – Ipanema, colorido y riquísimo","Confeitaria Colombo – el café histórico más lindo de Río","Mercado São Sebastião – food court moderno","Comida de praia – agua de coco + acaí obligatorio 🥥"],tip:"💡 Llevá dólares o una billetera virtual como Wise o Nubank para no pagar comisiones cambiando pesos. El dólar rinde muy bien en Brasil."},
+   nights:{places:["Lapa – el corazón de la samba y la rumba nocturna de Río 🎶","Belmonte Bar – punto de encuentro clásico en Leblon","Bar do Mineiro – Santa Teresa, bohemio y con música","Rio Scenarium – 3 pisos de samba en vivo, imperdible"],tip:"💡 Reservá con anticipación el tour de Cristo Redentor e Isla Grande, especialmente en enero que es temporada alta."}
   },
   {id:"sur",category:"vacaciones",destination:"Sur Argentino",country:"Argentina 🇦🇷",emoji:"🏔️",
-   dates:"Enero · 1ª quincena · 10 días",
+   dates:"4 – 14 Ene 2027 · 10 noches",
    image:"img-sur.png",
-   tags:["Montaña","Lagos","Trekking"],pricePerPerson:"$620.000",
+   tags:["Montaña","Lagos","Trekking"],pricePerPerson:"USD 1.200–1.400",
    itinerary:[
-     {day:1,title:"Llegada a Bariloche",desc:"Vuelo o bus. Primer helado y lago Nahuel Huapi.",activities:["Centro cívico","Helados Jauja","Lago"]},
-     {day:2,title:"Circuito Chico",desc:"Cerro Campanario con vista 360° y Llao Llao.",activities:["Cerro Campanario","Llao Llao","Playa Serena"]},
-     {day:3,title:"Cerro Catedral",desc:"Trekking y vistas desde los refugios de altura.",activities:["Cerro Catedral","Trekking","Refugio Lynch"]},
-     {day:4,title:"El Bolsón",desc:"La capital hippie patagónica. Feria y cerveza artesanal.",activities:["Feria regional","Lago Puelo","Cerveza artesanal"]},
-     {day:5,title:"Kayak en los Lagos",desc:"Kayak grupal y tarde de fogón.",activities:["Kayak grupal","Lago Gutierrez","Fogón"]},
-     {day:6,title:"Ruta de los 7 Lagos",desc:"Uno de los paisajes más increíbles del mundo.",activities:["Ruta 7 Lagos","Lago Traful","San Martín"]},
-     {day:7,title:"San Martín de los Andes",desc:"El pueblo más lindo de la Patagonia.",activities:["Chapelco","Lago Lacar","Paseo en barco"]},
-     {day:8,title:"Villa La Angostura",desc:"Los Arrayanes, árboles únicos en el mundo.",activities:["Los Arrayanes","Puerto Manzano","Boutiques"]},
-     {day:9,title:"Día libre y compras",desc:"Chocolates, artesanías y cervezas para llevar.",activities:["Chocolates","Recuerdos","Relax"]},
-     {day:10,title:"Regreso",desc:"Vuelta a Mendoza con el alma patagónica.",activities:["Transfer","Terminal","🏠"]}
+     {day:1,title:"Llegada a Bariloche",desc:"Vuelo o bus desde Mendoza. Primer helado artesanal y el lago Nahuel Huapi.",activities:["Centro cívico","Helados Jauja","Lago Nahuel Huapi"]},
+     {day:2,title:"Circuito Chico",desc:"Cerro Campanario con vista 360° y el icónico Hotel Llao Llao.",activities:["Cerro Campanario","Hotel Llao Llao","Playa Serena"]},
+     {day:3,title:"Cerro Catedral",desc:"Trekking y vistas increíbles desde los refugios de altura.",activities:["Cerro Catedral","Trekking","Refugio Lynch"]},
+     {day:4,title:"El Bolsón",desc:"La capital hippie patagónica. Feria regional y cerveza artesanal.",activities:["Feria regional","Lago Puelo","Cerveza artesanal"]},
+     {day:5,title:"Kayak en los lagos",desc:"Kayak grupal en el Lago Gutierrez y tarde de fogón.",activities:["Kayak grupal","Lago Gutierrez","Fogón"]},
+     {day:6,title:"Ruta de los 7 Lagos",desc:"Uno de los paisajes más increíbles del mundo. Llegamos a San Martín.",activities:["Ruta 7 Lagos","Lago Traful","San Martín de los Andes"]},
+     {day:7,title:"San Martín de los Andes",desc:"El pueblo más lindo de la Patagonia. Kayak en el Lago Lacar.",activities:["Chapelco","Lago Lacar","Paseo en barco"]},
+     {day:8,title:"Villa La Angostura",desc:"Los Arrayanes, árboles únicos en el mundo. Pueblo boutique.",activities:["Los Arrayanes","Puerto Manzano","Boutiques"]},
+     {day:9,title:"Día libre y compras",desc:"Chocolates, artesanías y cervezas artesanales para llevar.",activities:["Chocolates Rapa Nui","Recuerdos","Relax"]},
+     {day:10,title:"Regreso",desc:"Vuelta a Mendoza con el alma patagónica.",activities:["Transfer","Terminal/Aeropuerto","🏠"]}
    ],
-   costs:{total:"$620.000",totalNote:"por persona · estimado",items:[
-     {icon:"✈️",name:"Vuelo/Bus Mendoza – Bariloche",note:"Ida y vuelta",amount:"$180.000"},
-     {icon:"🚐",name:"Excursiones y traslados",note:"7 Lagos, El Bolsón, kayak",amount:"$90.000"},
-     {icon:"🏠",name:"Alojamiento 9 noches",note:"Por persona",amount:"$200.000"},
-     {icon:"🍔",name:"Comida",note:"Estimado x9 días",amount:"$90.000"},
-     {icon:"🎡",name:"Actividades y salidas",note:"Estimado",amount:"$60.000"}
+   costs:{total:"USD 1.200–1.400",totalNote:"por persona · todo incluido",items:[
+     {icon:"✈️",name:"Vuelo Mendoza – Bariloche",note:"Ida y vuelta · estimado",amount:"USD 150–250"},
+     {icon:"🚗",name:"Nafta",note:"En auto · por persona",amount:"USD 100"},
+     {icon:"🏠",name:"Alojamiento Bariloche",note:"10 noches · opción barata USD 226 · cómoda USD 444",amount:"USD 226–444"},
+     {icon:"🍽️",name:"Comida + salidas",note:"USD 70/día x 10 días",amount:"USD 700"},
+     {icon:"🚐",name:"Excursiones",note:"Ruta 7 Lagos, El Bolsón, kayak",amount:"USD 80–120"}
    ]},
    lodgings:[
-     {name:"Airbnb Cabaña Bariloche",badge:"air",loc:"📍 Km 14, Lago Gutierrez",desc:"Cabaña para 10 con vista al lago. Fogón, asador y muelle privado.",price:"$56.000",priceNote:"/ persona / noche",link:"https://www.airbnb.com",img:"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=260&q=80"},
-     {name:"Hostería Patagonika",badge:"book",loc:"📍 Centro de Bariloche",desc:"Desayuno incluido con vista al Nahuel Huapi. Muy bien ubicada.",price:"$42.000",priceNote:"/ persona / noche",link:"https://www.booking.com",img:"https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=260&q=80"}
+     {name:"Airbnb Bariloche · USD 226",badge:"air",loc:"📍 San Carlos de Bariloche",desc:"USD 2.260 las 10 noches entre 10. USD 226 por persona. Cabaña cómoda con vista al lago.",price:"USD 226",priceNote:"/ persona · 10 noches",link:"https://www.airbnb.com.ar/rooms/1411243535692434539?adults=10&check_in=2027-01-04&check_out=2027-01-14",img:"img-sur.png"},
+     {name:"Airbnb Bariloche · USD 248",badge:"air",loc:"📍 San Carlos de Bariloche",desc:"USD 2.485 las 10 noches entre 10. USD 248 por persona. Muy buena relación precio/calidad.",price:"USD 248",priceNote:"/ persona · 10 noches",link:"https://www.airbnb.com.ar/rooms/53360244?adults=10&check_in=2027-01-04&check_out=2027-01-14",img:"img-sur.png"},
+     {name:"Airbnb Bariloche · USD 339",badge:"air",loc:"📍 San Carlos de Bariloche",desc:"USD 3.396 las 10 noches entre 10. USD 339 por persona. Opción cómoda con lindas vistas.",price:"USD 339",priceNote:"/ persona · 10 noches",link:"https://www.airbnb.com.ar/rooms/54006706?adults=10&check_in=2027-01-04&check_out=2027-01-14",img:"img-sur.png"},
+     {name:"Airbnb Bariloche · USD 444",badge:"air",loc:"📍 San Carlos de Bariloche",desc:"USD 4.437 las 10 noches entre 10. USD 444 por persona. La opción premium del grupo.",price:"USD 444",priceNote:"/ persona · 10 noches",link:"https://www.airbnb.com.ar/rooms/1214608952497805957?adults=10&check_in=2027-01-04&check_out=2027-01-14",img:"img-sur.png"}
    ],
-   food:{budget:"~$18.000–25.000 por persona/día",places:["Heladería Jauja – famosa en todo el país","El Boliche de Alberto – parrilla patagónica","Fonda del Tío – fondue con vista al lago","Cervecería Blest – la más clásica","Mercado del Lago – productos regionales"],tip:"💡 Los chocolates más baratos están en la fábrica Rapa Nui. Llevate cajas para regalar (y para vos)."},
-   nights:{places:["Wilkenny Irish Pub – el más popular del centro","Cerebro Boliche – el clásico de Bariloche","Cervecería Blest – tardes artesanales","Fogones privados en la cabaña 🔥"],tip:"💡 Los fogones en la cabaña con vino patagónico son lo mejor del sur. Una noche imperdible."}
+   food:{budget:"USD 70/día · USD 700 en total (10 días)",places:["Heladería Jauja – famosa en todo el país 🍦","El Boliche de Alberto – parrilla patagónica clásica","Fonda del Tío – fondue de queso con vista al lago","Cervecería Blest – la más clásica de Bariloche 🍺","Mercado del Lago – productos regionales y artesanales"],tip:"💡 Los chocolates más baratos están en la fábrica Rapa Nui. Llevate cajas para regalar y para vos. Comprá vino patagónico para los fogones nocturnos."},
+   nights:{places:["Wilkenny Irish Pub – el más popular del centro","Cerebro Boliche – el clásico de Bariloche 🎉","Cervecería Blest – tardes con artesanal","Fogones en la cabaña con vino patagónico 🔥"],tip:"💡 Los fogones en la cabaña con vino patagónico son lo mejor del sur. Una noche que no van a olvidar."}
   },
-  {id:"colombia",category:"vacaciones",destination:"Colombia",country:"Colombia 🇨🇴",emoji:"💃",
-   dates:"Enero · 1ª quincena · 10 días",
+  {id:"colombia",category:"vacaciones",destination:"Colombia · Cartagena",country:"Colombia 🇨🇴",emoji:"💃",
+   dates:"4 – 14 Ene 2027 · 10 noches",
    image:"img-colombia.png",
-   tags:["Salsa","Cultura","Caribe"],pricePerPerson:"$950.000",
+   tags:["Salsa","Caribe","Cultura"],pricePerPerson:"USD 1.650–1.900",
    itinerary:[
-     {day:1,title:"Llegada a Bogotá",desc:"La Candelaria y Monserrate.",activities:["La Candelaria","Monserrate","Zona Rosa"]},
-     {day:2,title:"Vuelo a Cartagena",desc:"La ciudad más romántica de Colombia.",activities:["Ciudad amurallada","Getsemaní","Atardecer"]},
-     {day:3,title:"Islas del Rosario",desc:"Excursión en lancha. Agua turquesa y snorkeling.",activities:["Islas del Rosario","Snorkeling","Playa privada"]},
-     {day:4,title:"Cartagena colonial",desc:"Castillo de San Felipe y murallas coloridas.",activities:["Castillo San Felipe","Murallas","Laguito"]},
-     {day:5,title:"Playa Blanca",desc:"Arena blanca y agua verde. Hammocks en el mar.",activities:["Playa Blanca","Hammocks","Ceviche"]},
-     {day:6,title:"Vuelo a Medellín",desc:"La Ciudad de la Eterna Primavera.",activities:["El Poblado","Parque Lleras","Primera rumba"]},
-     {day:7,title:"Metro Cable",desc:"Vista increíble de toda la ciudad desde los barrios altos.",activities:["Metro Cable","Comunas","Museo"]},
-     {day:8,title:"Guatapé y El Peñol",desc:"740 escalones y vista a toda la región.",activities:["El Peñol","Guatapé colorido","Embalse"]},
-     {day:9,title:"Shopping y rumba",desc:"El Hueco y la noche de salsa más loca.",activities:["El Hueco","Shopping","Salsa all night"]},
-     {day:10,title:"Regreso",desc:"Vuelta a Mendoza.",activities:["Aeropuerto","Vuelta a casa","🏠"]}
+     {day:1,title:"Llegada a Cartagena",desc:"Vuelo desde Mendoza (con escala). Check-in en el Airbnb. Primera noche en la ciudad amurallada.",activities:["Check-in","Ciudad amurallada","Getsemaní"]},
+     {day:2,title:"City Tour Cartagena",desc:"Tour 3hs en chiva típica: Bocagrande, Bahía, Muelle turístico, Monumento de los Zapatos Viejos, Castillo San Felipe y ciudad amurallada.",activities:["Castillo San Felipe","Ciudad amurallada","Bahía","Zapatos Viejos"]},
+     {day:3,title:"Isla Barú y las Islas",desc:"Excursión 8hs: Isla Barú, aguas turquesas, Islas del Rosario y 5 Islas. Almuerzo opcional incluido.",activities:["Isla Barú","Islas del Rosario","5 Islas","Agua turquesa"]},
+     {day:4,title:"Playa Blanca",desc:"La playa más hermosa de Colombia. Arena blanca, agua verde y hammocks en el mar.",activities:["Playa Blanca","Hammocks","Ceviche","Atardecer"]},
+     {day:5,title:"Día libre en Cartagena",desc:"Recorrer las calles del casco histórico, mercado artesanal y tiendas locales.",activities:["Casco histórico","Mercado artesanal","Murallas","Bocagrande"]},
+     {day:6,title:"Vuelo a Medellín",desc:"La Ciudad de la Eterna Primavera. Instalación en El Poblado.",activities:["El Poblado","Parque Lleras","Primera rumba"]},
+     {day:7,title:"Metro Cable y las Comunas",desc:"Subimos al metrocable para ver la ciudad desde arriba. Las famosas comunas transformadas.",activities:["Metro Cable","Comunas","Museo Casa de la Memoria"]},
+     {day:8,title:"Guatapé y El Peñol",desc:"La roca gigante con 740 escalones y vista impresionante a toda la región.",activities:["El Peñol (740 escalones)","Guatapé colorido","Embalse"]},
+     {day:9,title:"Shopping y rumba",desc:"El Hueco para compras y la noche de salsa más épica.",activities:["El Hueco","Shopping","Parque Lleras","Salsa all night"]},
+     {day:10,title:"Regreso",desc:"Vuelta a Mendoza desde Medellín.",activities:["Aeropuerto Rionegro","Vuelta a casa","🏠"]}
    ],
-   costs:{total:"$950.000",totalNote:"por persona · estimado",items:[
-     {icon:"✈️",name:"Vuelo Mendoza – Bogotá",note:"Ida y vuelta",amount:"$420.000"},
-     {icon:"✈️",name:"Vuelos internos Colombia",note:"Cartagena – Medellín",amount:"$80.000"},
-     {icon:"🏠",name:"Alojamiento 9 noches",note:"Por persona",amount:"$250.000"},
-     {icon:"🍔",name:"Comida y bebidas",note:"Estimado x9 días",amount:"$100.000"},
-     {icon:"🎡",name:"Excursiones y salidas",note:"Islas, Peñol, rumbas",amount:"$100.000"}
+   costs:{total:"USD 1.650–1.900",totalNote:"por persona · todo incluido",items:[
+     {icon:"✈️",name:"Vuelo LATAM MDZ→CTG (mejor precio)",note:"1 escala · GotoGate",amount:"USD 750"},
+     {icon:"✈️",name:"Vuelo LATAM MDZ→CTG (opción 2)",note:"2 escalas",amount:"USD 805–838"},
+     {icon:"🏠",name:"Alojamiento Cartagena",note:"10 noches · opción barata USD 215 · cómoda USD 435",amount:"USD 215–435"},
+     {icon:"🍽️",name:"Comida + alcohol + salidas",note:"USD 70/día x 10 días",amount:"USD 700"},
+     {icon:"🏝️",name:"Isla Barú + Islas del Rosario",note:"8hs · cancelación gratis",amount:"USD 21"},
+     {icon:"🏛️",name:"City Tour Cartagena + Castillo",note:"3hs · guía bilingüe",amount:"USD 29"}
    ]},
    lodgings:[
-     {name:"Airbnb Casa en Getsemaní",badge:"air",loc:"📍 Getsemaní, Cartagena",desc:"Casona colonial con patio y hamacas. A 5 min de la ciudad amurallada.",price:"$65.000",priceNote:"/ persona / noche",link:"https://www.airbnb.com",img:"https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=260&q=80"},
-     {name:"Penthouse El Poblado",badge:"air",loc:"📍 El Poblado, Medellín",desc:"Rooftop con vista a las montañas. A 2 cuadras del Parque Lleras.",price:"$75.000",priceNote:"/ persona / noche",link:"https://www.airbnb.com",img:"https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=260&q=80"}
+     {name:"Airbnb Cartagena · USD 215",badge:"air",loc:"📍 Cartagena, Colombia",desc:"USD 2.155 las 10 noches entre 10. USD 215 por persona. Excelente ubicación en Cartagena.",price:"USD 215",priceNote:"/ persona · 10 noches",link:"https://www.airbnb.com.ar/rooms/909701255518557518?adults=10&check_in=2027-01-04&check_out=2027-01-14",img:"img-colombia.png"},
+     {name:"Airbnb Cartagena · USD 222",badge:"air",loc:"📍 Cartagena, Colombia",desc:"USD 2.229 las 10 noches entre 10. USD 222 por persona. Buena relación precio/calidad.",price:"USD 222",priceNote:"/ persona · 10 noches",link:"https://www.airbnb.com.ar/rooms/1560216656211711018?adults=10&check_in=2027-01-04&check_out=2027-01-14",img:"img-colombia.png"},
+     {name:"Airbnb Cartagena · USD 230",badge:"air",loc:"📍 Cartagena, Colombia",desc:"USD 2.305 las 10 noches entre 10. USD 230 por persona. Cómodo y bien ubicado.",price:"USD 230",priceNote:"/ persona · 10 noches",link:"https://www.airbnb.com.ar/rooms/33719415?adults=10&check_in=2027-01-04&check_out=2027-01-14",img:"img-colombia.png"},
+     {name:"Airbnb Cartagena · USD 435",badge:"air",loc:"📍 Cartagena, Colombia",desc:"USD 4.345 las 10 noches entre 10. USD 435 por persona. La opción premium del viaje.",price:"USD 435",priceNote:"/ persona · 10 noches",link:"https://www.airbnb.com.ar/rooms/1645121656491650460?adults=10&check_in=2027-01-04&check_out=2027-01-14",img:"img-colombia.png"}
    ],
-   food:{budget:"~$20.000–28.000 por persona/día",places:["La Cevichería – el ceviche más famoso de Cartagena","El Boliche – bandeja paisa en Medellín","Café Velvet – desayunos hipster en El Poblado","Mercado del Río – food court con todo","Arepas en cualquier esquina 🌽"],tip:"💡 Colombia tiene los mejores jugos naturales del mundo. Pedí 'jugo natural' y te llenan de fruta fresca por poca plata."},
-   nights:{places:["Parque Lleras – el corazón de la rumba en Medellín","Café Havana – la mejor salsa de Cartagena","El Eslabon Prendido – salsa con orquesta en vivo","Calle del Embudo – bares en la ciudad amurallada"],tip:"💡 En Colombia la rumba empieza tarde (11pm+). Tomá aunque sea una clase de salsa antes de salir, es otro nivel."}
+   food:{budget:"USD 70/día · USD 700 en total (10 días)",places:["La Cevichería – el ceviche más famoso de Cartagena (reservar)","El Boliche – bandeja paisa auténtica en Medellín","Café Velvet – desayunos hipster en El Poblado","Mercado del Río – food court con todo tipo de comida","Arepas con todo en cualquier esquina 🌽","Jugo natural de fruta fresca – los mejores del mundo 🍹"],tip:"💡 En Colombia la rumba empieza tarde (11pm+). El Parque Lleras en Medellín es el epicentro. Tomá aunque sea una clase de salsa, es otro nivel completamente."},
+   nights:{places:["Parque Lleras – el corazón de la rumba en Medellín 🎶","Café Havana – la mejor salsa de Cartagena","El Eslabon Prendido – salsa en vivo con orquesta","Calle del Embudo – bares en la ciudad amurallada"],tip:"💡 Reservá con anticipación las excursiones a Isla Barú y Guatapé, especialmente en enero que es temporada alta en Colombia."}
   }
 ];
 
