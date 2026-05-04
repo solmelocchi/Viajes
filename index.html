@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Viajes</title>
+<title>Viajes con Amigas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
@@ -134,9 +134,9 @@ nav{
 
 /* name input row */
 .name-row{display:flex;gap:10px;margin-bottom:22px;align-items:center}
-.name-input{flex:1;padding:11px 16px;border:1.5px solid var(--sand);border-radius:var(--rs);background:var(--bg);font-family:var(--fb);font-size:.88rem;color:var(--text);font-weight:400;outline:none;transition:border-color .2s}
+.name-input{flex:1;padding:11px 16px;border:1.5px solid var(--sand);border-radius:var(--rs);background:var(--bg);font-family:var(--fb);font-size:.88rem;color:var(--text);font-weight:400;outline:none;transition:border-color .2s;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238C7055' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px;cursor:pointer}
 .name-input:focus{border-color:var(--rust)}
-.name-input::placeholder{color:var(--textl)}
+.name-input:disabled{opacity:.6;cursor:not-allowed}
 .name-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--textl);white-space:nowrap}
 
 .vote-opts{display:flex;flex-direction:column;gap:12px}
@@ -302,6 +302,10 @@ footer strong{color:rgba(240,235,224,.80)}
     <button class="btn-hero" onclick="document.getElementById('viajes').scrollIntoView({behavior:'smooth'})">
       Ver destinos <span class="arr">→</span>
     </button>
+  </div>
+
+</section>
+
 
 <!-- TRIPS -->
 <div class="trips-sec" id="viajes">
@@ -319,12 +323,24 @@ footer strong{color:rgba(240,235,224,.80)}
         <div class="vote-ico">🗳️</div>
         <div>
           <div class="vote-title">¿A dónde vamos en julio?</div>
-          <div class="vote-desc">Escribí tu nombre, elegí tu destino y confirmá.</div>
+          <div class="vote-desc">Elegí tu nombre de la lista, seleccioná el destino y confirmá tu voto.</div>
         </div>
       </div>
       <div class="name-row">
-        <span class="name-label">Tu nombre</span>
-        <input class="name-input" id="name-mitad" type="text" placeholder= maxlength="24"/>
+        <span class="name-label">Soy</span>
+        <select class="name-input" id="name-mitad">
+          <option value="">— Elegí tu nombre —</option>
+          <option value="Jose V">Jose V</option>
+          <option value="Jose A">Jose A</option>
+          <option value="Jose P">Jose P</option>
+          <option value="Sofia">Sofia</option>
+          <option value="Julia">Julia</option>
+          <option value="Juan">Juan</option>
+          <option value="Mecchi">Mecchi</option>
+          <option value="Delfi">Delfi</option>
+          <option value="Pipe">Pipe</option>
+          <option value="Sol">Sol</option>
+        </select>
       </div>
       <div class="vote-opts" id="opts-mitad"></div>
       <div class="vote-actions">
@@ -348,12 +364,24 @@ footer strong{color:rgba(240,235,224,.80)}
         <div class="vote-ico">🗳️</div>
         <div>
           <div class="vote-title">¿A dónde vamos en enero?</div>
-          <div class="vote-desc">Escribí tu nombre, elegí tu destino y confirmá. .</div>
+          <div class="vote-desc">Elegí tu nombre de la lista, seleccioná el destino y confirmá tu voto.</div>
         </div>
       </div>
       <div class="name-row">
-        <span class="name-label">Tu nombre</span>
-        <input class="name-input" id="name-vacaciones" type="text" placeholder= maxlength="24"/>
+        <span class="name-label">Soy</span>
+        <select class="name-input" id="name-vacaciones">
+          <option value="">— Elegí tu nombre —</option>
+          <option value="Jose V">Jose V</option>
+          <option value="Jose A">Jose A</option>
+          <option value="Jose P">Jose P</option>
+          <option value="Sofia">Sofia</option>
+          <option value="Julia">Julia</option>
+          <option value="Juan">Juan</option>
+          <option value="Mecchi">Mecchi</option>
+          <option value="Delfi">Delfi</option>
+          <option value="Pipe">Pipe</option>
+          <option value="Sol">Sol</option>
+        </select>
       </div>
       <div class="vote-opts" id="opts-vacaciones"></div>
       <div class="vote-actions">
@@ -401,7 +429,7 @@ footer strong{color:rgba(240,235,224,.80)}
 const trips=[
   {id:"vina",category:"mitad",destination:"Viña del Mar",country:"Chile 🇨🇱",emoji:"🌊",
    dates:"Julio / Agosto · 4 días",
-   image:"https://images.unsplash.com/photo-1596422846543-75c6fc197f11?w=700&q=80",
+   image:"img-vina.png",
    tags:["Playa","Ciudad","Paseos"],pricePerPerson:"$280.000",
    itinerary:[
      {day:1,title:"Llegada y Valparaíso",desc:"Llegamos a Santiago y tomamos bus a Viña (~1h30). Tarde en los cerros de Valparaíso.",activities:["Cerro Alegre","Graffitis","Cena en el puerto"]},
@@ -425,7 +453,7 @@ const trips=[
   },
   {id:"norte",category:"mitad",destination:"Norte Argentino",country:"Argentina 🇦🇷",emoji:"🏜️",
    dates:"Julio / Agosto · 4 días",
-   image:"https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=700&q=80",
+   image:"img-norte.png",
    tags:["Cultura","Naturaleza","Salinas"],pricePerPerson:"$210.000",
    itinerary:[
      {day:1,title:"Llegada a Salta",desc:"Vuelo directo. Centro histórico: Cabildo, Catedral y Peatonal Alberdi.",activities:["Cabildo","Catedral","Peña folclórica"]},
@@ -449,7 +477,7 @@ const trips=[
   },
   {id:"brasil",category:"vacaciones",destination:"Brasil",country:"Brasil 🇧🇷",emoji:"🌴",
    dates:"Enero · 1ª quincena · 10 días",
-   image:"https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=700&q=80",
+   image:"img-brasil.png",
    tags:["Playa","Fiesta","Electrónica"],pricePerPerson:"$850.000",
    itinerary:[
      {day:1,title:"Llegada a Floripa",desc:"Vuelo a Florianópolis. Primer atardecer en la isla.",activities:["Check-in","Centro histórico","Atardecer"]},
@@ -479,7 +507,7 @@ const trips=[
   },
   {id:"sur",category:"vacaciones",destination:"Sur Argentino",country:"Argentina 🇦🇷",emoji:"🏔️",
    dates:"Enero · 1ª quincena · 10 días",
-   image:"https://images.unsplash.com/photo-1501854140801-50d01698950b?w=700&q=80",
+   image:"img-sur.png",
    tags:["Montaña","Lagos","Trekking"],pricePerPerson:"$620.000",
    itinerary:[
      {day:1,title:"Llegada a Bariloche",desc:"Vuelo o bus. Primer helado y lago Nahuel Huapi.",activities:["Centro cívico","Helados Jauja","Lago"]},
@@ -509,7 +537,7 @@ const trips=[
   },
   {id:"colombia",category:"vacaciones",destination:"Colombia",country:"Colombia 🇨🇴",emoji:"💃",
    dates:"Enero · 1ª quincena · 10 días",
-   image:"https://images.unsplash.com/photo-1582001049946-fa1a4b0c8d15?w=700&q=80",
+   image:"img-colombia.png",
    tags:["Salsa","Cultura","Caribe"],pricePerPerson:"$950.000",
    itinerary:[
      {day:1,title:"Llegada a Bogotá",desc:"La Candelaria y Monserrate.",activities:["La Candelaria","Monserrate","Zona Rosa"]},
@@ -637,12 +665,13 @@ function submitVote(cat) {
 
   const nameEl = document.getElementById('name-' + cat);
   const rawName = (nameEl.value || '').trim();
-  const name = rawName || 'Anónima';
+  if (!rawName) { alert('Elegí tu nombre de la lista primero 👇'); return; }
+  const name = rawName;
 
   // Check duplicate name
   const allVoters = Object.values(votes[cat]).flat().map(v => v.name.toLowerCase());
-  if (rawName && allVoters.includes(rawName.toLowerCase())) {
-    alert(`"${rawName}" ya votó en esta categoría. Cada amiga vota una vez. Si querés cambiar tu voto, hacé click en "Cambiar voto".`);
+  if (allVoters.includes(rawName.toLowerCase())) {
+    alert(`"${rawName}" ya votó en esta categoría. Si querés cambiar tu voto, hacé click en "Cambiar voto".`);
     return;
   }
 
@@ -809,6 +838,18 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
 renderCards();
 renderVote('mitad');
 renderVote('vacaciones');
+
+// Restore select state from localStorage
+['mitad','vacaciones'].forEach(cat => {
+  if (sel[cat]) {
+    // find which name voted for this category
+    const myVotes = Object.values(votes[cat]).flat();
+    // We can't know which name this browser session used unless stored separately
+    // Just disable the select to reflect voted state
+    const nameEl = document.getElementById('name-' + cat);
+    if (nameEl) nameEl.disabled = true;
+  }
+});
 </script>
 </body>
 </html>
