@@ -5,872 +5,321 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Viajes con Amigas ✈️</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* ─── VARIABLES ─────────────────────────────────────────── */
     :root {
-      --bg:         #FAF7F2;
-      --bg2:        #F5EFE6;
-      --cream:      #EDE0D0;
-      --caramel:    #C4956A;
-      --dusty:      #8B5E52;
-      --blush:      #E8C9C0;
-      --sage:       #A8B5A0;
-      --text:       #2E1F17;
-      --text-light: #8C7166;
-      --white:      #FFFFFF;
-      --shadow:     0 4px 30px rgba(139,94,82,0.10);
-      --shadow-lg:  0 12px 50px rgba(139,94,82,0.16);
-      --radius:     18px;
-      --radius-sm:  10px;
-      --font-display: 'Cormorant Garamond', Georgia, serif;
-      --font-body:    'DM Sans', sans-serif;
+      --bg:#FAF7F2;--bg2:#F5EFE6;--cream:#EDE0D0;
+      --caramel:#C4956A;--dusty:#8B5E52;--blush:#E8C9C0;
+      --text:#2A1A10;--textl:#8C7166;--white:#FFFFFF;
+      --sh:0 4px 28px rgba(139,94,82,0.09);
+      --shl:0 14px 50px rgba(139,94,82,0.16);
+      --r:20px;--rs:12px;
+      --fd:'Fraunces',Georgia,serif;
+      --fb:'Outfit',sans-serif;
     }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--fb);background:var(--bg);color:var(--text);overflow-x:hidden}
+    img{display:block;max-width:100%}
+    a{text-decoration:none;color:inherit}
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-thumb{background:var(--cream);border-radius:10px}
 
-    /* ─── RESET & BASE ──────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font-body);
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-    img { display: block; max-width: 100%; }
-    a { text-decoration: none; color: inherit; }
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:16px 44px;
+      background:rgba(250,247,242,0.88);backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(196,149,106,0.12)}
+    .nav-logo{font-family:var(--fd);font-size:1.4rem;font-weight:400;color:var(--dusty)}
+    .nav-logo em{font-style:italic;color:var(--caramel)}
+    .nav-links{display:flex;gap:30px;list-style:none}
+    .nav-links a{font-size:0.8rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:var(--textl);transition:color 0.2s}
+    .nav-links a:hover{color:var(--caramel)}
 
-    /* ─── SCROLLBAR ─────────────────────────────────────────── */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--bg2); }
-    ::-webkit-scrollbar-thumb { background: var(--cream); border-radius: 10px; }
+    /* HERO */
+    .hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:flex-end;overflow:hidden}
+    .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%;animation:hz 16s ease-out forwards}
+    @keyframes hz{from{transform:scale(1.05)}to{transform:scale(1)}}
+    .hero-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(42,26,16,.82) 0%,rgba(42,26,16,.28) 55%,rgba(42,26,16,.04) 100%)}
+    .hero-ct{position:relative;z-index:2;padding:0 56px 72px;animation:up 1s 0.2s both}
+    @keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+    .hero-chip{display:inline-block;font-size:0.7rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--blush);border:1px solid rgba(232,201,192,.45);padding:5px 14px;border-radius:40px;margin-bottom:18px}
+    .hero-h1{font-family:var(--fd);font-size:clamp(3.4rem,9vw,6.5rem);font-weight:300;line-height:1.02;color:#FDF8F4;margin-bottom:16px}
+    .hero-h1 em{font-style:italic;color:#F2D5C8}
+    .hero-sub{font-size:0.95rem;color:rgba(253,248,244,.7);font-weight:300;margin-bottom:34px;max-width:360px;line-height:1.65}
+    .btn-hero{display:inline-flex;align-items:center;gap:10px;background:var(--caramel);color:#FDF8F4;padding:14px 32px;border-radius:50px;font-family:var(--fb);font-size:0.82rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;border:none;cursor:pointer;box-shadow:0 6px 24px rgba(196,149,106,.45);transition:background .2s,transform .2s,box-shadow .2s}
+    .btn-hero:hover{background:var(--dusty);transform:translateY(-2px);box-shadow:0 10px 32px rgba(139,94,82,.45)}
+    .btn-hero .arr{transition:transform .2s}
+    .btn-hero:hover .arr{transform:translateX(5px)}
+    .scrl{position:absolute;bottom:28px;right:44px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(253,248,244,.4);font-size:.62rem;letter-spacing:.13em;text-transform:uppercase}
+    .scrl-bar{width:1px;height:44px;background:linear-gradient(to bottom,rgba(253,248,244,.5),transparent);animation:sa 2.2s infinite}
+    @keyframes sa{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
-    /* ─── NAV ───────────────────────────────────────────────── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 40px;
-      background: rgba(250,247,242,0.85);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(196,149,106,0.15);
-      transition: padding 0.3s;
-    }
-    .nav-logo {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      color: var(--dusty);
-    }
-    .nav-logo span { color: var(--caramel); font-style: italic; }
-    .nav-links {
-      display: flex; gap: 32px; list-style: none;
-    }
-    .nav-links a {
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-light);
-      position: relative;
-      transition: color 0.2s;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute; bottom: -3px; left: 0; right: 0;
-      height: 1.5px; background: var(--caramel);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.3s;
-    }
-    .nav-links a:hover { color: var(--caramel); }
-    .nav-links a:hover::after { transform: scaleX(1); }
+    /* STRIP */
+    .strip{background:var(--dusty);display:flex;justify-content:center;align-items:center;gap:56px;padding:22px 40px;flex-wrap:wrap}
+    .ss{text-align:center;color:#FDF8F4}
+    .ss strong{display:block;font-family:var(--fd);font-size:2.2rem;font-weight:300}
+    .ss span{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;opacity:.65}
+    .sd{width:1px;height:36px;background:rgba(253,248,244,.18)}
 
-    /* ─── HERO ──────────────────────────────────────────────── */
-    .hero {
-      position: relative;
-      height: 100vh; min-height: 580px;
-      display: flex; align-items: flex-end;
-      overflow: hidden;
-    }
-    .hero-img {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center 30%;
-      transform: scale(1.04);
-      animation: heroZoom 14s ease-out forwards;
-    }
-    @keyframes heroZoom {
-      from { transform: scale(1.04); }
-      to   { transform: scale(1.00); }
-    }
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(46,31,23,0.80) 0%,
-        rgba(46,31,23,0.35) 50%,
-        rgba(46,31,23,0.05) 100%
-      );
-    }
-    .hero-content {
-      position: relative; z-index: 2;
-      padding: 0 60px 70px;
-      animation: fadeUp 1.1s 0.3s both;
-    }
-    @keyframes fadeUp {
-      from { opacity:0; transform: translateY(30px); }
-      to   { opacity:1; transform: translateY(0); }
-    }
-    .hero-tag {
-      display: inline-block;
-      font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--blush); margin-bottom: 14px;
-      border: 1px solid rgba(232,201,192,0.5);
-      padding: 5px 14px; border-radius: 30px;
-    }
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(3.2rem, 8vw, 6rem);
-      font-weight: 300;
-      line-height: 1.05;
-      color: #FDF8F4;
-      letter-spacing: -0.01em;
-      margin-bottom: 18px;
-    }
-    .hero-title em {
-      font-style: italic;
-      color: var(--blush);
-    }
-    .hero-subtitle {
-      font-size: 1rem; color: rgba(253,248,244,0.75);
-      font-weight: 300; margin-bottom: 32px;
-      max-width: 380px; line-height: 1.6;
-    }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--caramel);
-      color: #FDF8F4;
-      padding: 14px 32px;
-      border-radius: 50px;
-      font-size: 0.85rem; font-weight: 500;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      cursor: pointer; border: none;
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 20px rgba(196,149,106,0.4);
-    }
-    .btn-primary:hover {
-      background: var(--dusty);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(139,94,82,0.45);
-    }
-    .btn-primary .arrow { transition: transform 0.2s; }
-    .btn-primary:hover .arrow { transform: translateX(4px); }
+    /* TRIPS SECTION */
+    .trips-sec{padding:80px 44px}
+    .cat-block{margin-bottom:72px}
+    .cat-hd{display:flex;align-items:center;gap:18px;margin-bottom:32px}
+    .cat-badge{flex-shrink:0;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:var(--cream);color:var(--textl);padding:5px 14px;border-radius:40px}
+    .cat-nm{font-family:var(--fd);font-size:1.9rem;font-weight:400}
+    .cat-nm em{font-style:italic;color:var(--caramel)}
+    .cat-ln{flex:1;height:1px;background:var(--cream)}
 
-    /* scroll hint */
-    .scroll-hint {
-      position: absolute; bottom: 28px; right: 40px;
-      z-index: 2;
-      display: flex; flex-direction: column; align-items: center; gap: 6px;
-      color: rgba(253,248,244,0.5);
-      font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
-    }
-    .scroll-line {
-      width: 1px; height: 44px;
-      background: linear-gradient(to bottom, rgba(253,248,244,0.5), transparent);
-      animation: scrollAnim 2s infinite;
-    }
-    @keyframes scrollAnim {
-      0%   { transform: scaleY(0); transform-origin: top; }
-      50%  { transform: scaleY(1); transform-origin: top; }
-      51%  { transform: scaleY(1); transform-origin: bottom; }
-      100% { transform: scaleY(0); transform-origin: bottom; }
-    }
+    /* CARDS */
+    .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:22px;margin-bottom:32px}
+    .trip-card{background:var(--white);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);cursor:pointer;transition:transform .3s,box-shadow .3s;animation:cin .55s both}
+    .trip-card:hover{transform:translateY(-7px);box-shadow:var(--shl)}
+    @keyframes cin{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    .card-th{position:relative;height:215px;overflow:hidden}
+    .card-th img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+    .trip-card:hover .card-th img{transform:scale(1.07)}
+    .card-ctry{position:absolute;top:13px;left:13px;background:rgba(250,247,242,.93);backdrop-filter:blur(6px);border-radius:30px;padding:4px 13px;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dusty)}
+    .card-emo{position:absolute;top:13px;right:13px;width:36px;height:36px;background:rgba(250,247,242,.93);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+    .card-bd{padding:20px 22px 24px}
+    .card-dest{font-family:var(--fd);font-size:1.55rem;font-weight:400;letter-spacing:-.01em;margin-bottom:4px}
+    .card-dates{font-size:.76rem;color:var(--textl);margin-bottom:12px;display:flex;align-items:center;gap:5px}
+    .card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+    .ctag{font-size:.66rem;font-weight:500;padding:3px 9px;border-radius:20px;background:var(--bg2);color:var(--textl)}
+    .card-bot{display:flex;align-items:center;justify-content:space-between;padding-top:13px;border-top:1px solid var(--bg2)}
+    .card-price{font-family:var(--fd);font-size:1.45rem;color:var(--caramel)}
+    .card-lbl{font-size:.66rem;color:var(--textl);letter-spacing:.06em}
+    .card-cta{font-size:.76rem;font-weight:500;color:var(--dusty);display:flex;align-items:center;gap:5px;transition:gap .2s}
+    .trip-card:hover .card-cta{gap:9px}
 
-    /* ─── SECTION BASE ──────────────────────────────────────── */
-    section { padding: 80px 40px; }
-    .section-tag {
-      font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--caramel); margin-bottom: 10px;
-    }
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 400; line-height: 1.15;
-      margin-bottom: 10px;
-    }
-    .section-title em { font-style: italic; color: var(--caramel); }
-    .section-desc {
-      font-size: 0.92rem; color: var(--text-light);
-      line-height: 1.7; max-width: 500px;
-    }
+    /* VOTE CARD */
+    .vote-card{background:var(--white);border-radius:var(--r);padding:32px 34px;box-shadow:var(--sh);border:1.5px solid var(--cream);margin-top:6px}
+    .vote-hd{display:flex;align-items:flex-start;gap:14px;margin-bottom:26px}
+    .vote-ico{width:48px;height:48px;flex-shrink:0;background:linear-gradient(135deg,#F9EDE8,#F0DDD5);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+    .vote-title{font-family:var(--fd);font-size:1.4rem;font-weight:400;margin-bottom:4px}
+    .vote-desc{font-size:.82rem;color:var(--textl);line-height:1.5}
+    .vote-opts{display:flex;flex-direction:column;gap:12px}
+    .vote-opt{border:1.5px solid var(--cream);border-radius:var(--rs);padding:16px 18px;cursor:pointer;transition:border-color .2s,background .2s,transform .15s}
+    .vote-opt:hover{border-color:var(--caramel);transform:translateX(3px)}
+    .vote-opt.sel{border-color:var(--caramel);background:#FFF8F4}
+    .vote-opt.voted-final{cursor:default}
+    .vote-opt.voted-final:hover{transform:none}
+    .vot-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+    .vot-nm{display:flex;align-items:center;gap:10px;font-family:var(--fd);font-size:1.1rem;font-weight:400}
+    .vot-count{font-size:.78rem;font-weight:600;color:var(--caramel);background:#FFF0E8;padding:3px 10px;border-radius:20px;min-width:64px;text-align:center}
+    .vot-bar-bg{height:6px;background:var(--bg2);border-radius:10px;overflow:hidden}
+    .vot-bar-fill{height:100%;background:linear-gradient(90deg,var(--caramel),var(--dusty));border-radius:10px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+    .vote-actions{margin-top:20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+    .btn-vote{flex:1;background:var(--caramel);color:#FDF8F4;border:none;border-radius:50px;padding:12px 20px;font-family:var(--fb);font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .15s}
+    .btn-vote:hover{background:var(--dusty);transform:translateY(-1px)}
+    .btn-vote:disabled{background:var(--cream);color:var(--textl);cursor:not-allowed;transform:none}
+    .btn-reset{font-size:.74rem;color:var(--textl);cursor:pointer;background:none;border:none;font-family:var(--fb);text-decoration:underline;text-underline-offset:3px;transition:color .2s}
+    .btn-reset:hover{color:var(--dusty)}
+    .vote-note{font-size:.74rem;color:var(--textl);text-align:center;margin-top:12px}
+    .my-vote-tag{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:600;color:var(--caramel)}
 
-    /* ─── INTRO STRIP ───────────────────────────────────────── */
-    .intro-strip {
-      background: var(--dusty);
-      padding: 22px 40px;
-      display: flex; gap: 50px; flex-wrap: wrap;
-      justify-content: center; align-items: center;
-    }
-    .intro-stat {
-      text-align: center;
-      color: #FDF8F4;
-    }
-    .intro-stat strong {
-      display: block;
-      font-family: var(--font-display);
-      font-size: 2.2rem; font-weight: 300;
-    }
-    .intro-stat span {
-      font-size: 0.75rem; letter-spacing: 0.1em;
-      text-transform: uppercase; opacity: 0.7;
-    }
-    .intro-divider {
-      width: 1px; height: 40px;
-      background: rgba(253,248,244,0.2);
-    }
+    /* MODAL */
+    .modal-ov{position:fixed;inset:0;z-index:200;background:rgba(42,26,16,.55);backdrop-filter:blur(5px);opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:flex-end;justify-content:center}
+    .modal-ov.open{opacity:1;pointer-events:all}
+    .modal{width:100%;max-width:800px;max-height:92vh;background:var(--bg);border-radius:28px 28px 0 0;overflow:hidden;display:flex;flex-direction:column;transform:translateY(100%);transition:transform .4s cubic-bezier(.32,.72,0,1)}
+    .modal-ov.open .modal{transform:translateY(0)}
+    .modal-hero{position:relative;height:250px;flex-shrink:0}
+    .modal-hero img{width:100%;height:100%;object-fit:cover}
+    .modal-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(42,26,16,.75) 0%,transparent 60%)}
+    .modal-ht{position:absolute;bottom:0;left:0;right:0;padding:18px 28px}
+    .modal-chip{display:inline-block;font-size:.64rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--blush);border:1px solid rgba(232,201,192,.45);padding:4px 12px;border-radius:20px;margin-bottom:8px}
+    .modal-h2{font-family:var(--fd);font-size:2.3rem;font-weight:300;color:#FDF8F4;line-height:1.1}
+    .modal-x{position:absolute;top:14px;right:14px;width:34px;height:34px;background:rgba(250,247,242,.9);backdrop-filter:blur(6px);border:none;border-radius:50%;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s;z-index:10}
+    .modal-x:hover{background:var(--white);transform:rotate(90deg)}
+    .modal-tabs{display:flex;background:var(--white);border-bottom:1px solid var(--cream);overflow-x:auto;flex-shrink:0}
+    .modal-tabs::-webkit-scrollbar{height:0}
+    .tab-btn{padding:13px 18px;border:none;background:none;font-family:var(--fb);font-size:.75rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--textl);cursor:pointer;white-space:nowrap;position:relative;transition:color .2s}
+    .tab-btn::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--caramel);transform:scaleX(0);transition:transform .25s}
+    .tab-btn.active{color:var(--caramel)}
+    .tab-btn.active::after{transform:scaleX(1)}
+    .modal-body{overflow-y:auto;flex:1}
+    .tab-panel{display:none;padding:28px}
+    .tab-panel.active{display:block}
 
-    /* ─── TRIPS SECTION ─────────────────────────────────────── */
-    #viajes { padding-top: 90px; }
-    .trips-header {
-      display: flex; justify-content: space-between;
-      align-items: flex-end; margin-bottom: 40px;
-      flex-wrap: wrap; gap: 20px;
-    }
+    /* Modal contents */
+    .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:26px}
+    .info-card{background:var(--white);border-radius:var(--rs);padding:16px 18px;box-shadow:var(--sh)}
+    .ic-ico{font-size:1.3rem;margin-bottom:6px}
+    .ic-lbl{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--textl);margin-bottom:3px}
+    .ic-val{font-family:var(--fd);font-size:1.1rem}
+    .iday{display:flex;gap:16px;margin-bottom:22px}
+    .dnum{flex-shrink:0;width:42px;height:42px;background:var(--caramel);color:#FDF8F4;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1.05rem;font-weight:600}
+    .dttl{font-family:var(--fd);font-size:1.1rem;margin-bottom:5px}
+    .ddsc{font-size:.82rem;color:var(--textl);line-height:1.6}
+    .dacts{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
+    .atag{font-size:.67rem;padding:3px 9px;background:var(--bg2);color:var(--textl);border-radius:20px}
+    .cost-ban{background:linear-gradient(135deg,var(--caramel),var(--dusty));border-radius:var(--r);padding:26px 28px;color:#FDF8F4;margin-bottom:22px;display:flex;justify-content:space-between;align-items:center}
+    .cl{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;opacity:.75;margin-bottom:4px}
+    .cv{font-family:var(--fd);font-size:2.7rem;font-weight:300;line-height:1}
+    .cn{font-size:.76rem;opacity:.65}
+    .crow{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--bg2)}
+    .crow:last-child{border:none}
+    .crowl{display:flex;align-items:center;gap:12px}
+    .cico{width:38px;height:38px;background:var(--bg2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+    .cnm{font-size:.86rem;font-weight:500}
+    .cnt{font-size:.73rem;color:var(--textl)}
+    .camt{font-family:var(--fd);font-size:1.25rem;color:var(--caramel)}
+    .lodge-c{background:var(--white);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);margin-bottom:16px;display:flex}
+    .lodge-img{width:125px;flex-shrink:0;object-fit:cover}
+    .lodge-bd{padding:16px 18px;flex:1}
+    .lbadge{display:inline-flex;align-items:center;gap:4px;font-size:.66rem;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:7px}
+    .ba{background:#FFE8D6;color:var(--caramel)}
+    .bb{background:#D6E8F5;color:#4A7FA5}
+    .lnm{font-family:var(--fd);font-size:1.05rem;margin-bottom:3px}
+    .lloc{font-size:.73rem;color:var(--textl);margin-bottom:7px}
+    .ldsc{font-size:.78rem;color:var(--textl);line-height:1.5;margin-bottom:11px}
+    .lft{display:flex;align-items:center;justify-content:space-between}
+    .lprice{font-family:var(--fd);font-size:1.15rem;color:var(--caramel)}
+    .lprice span{font-family:var(--fb);font-size:.68rem;color:var(--textl)}
+    .llink{font-size:.73rem;font-weight:500;color:var(--dusty);display:flex;align-items:center;gap:4px;transition:gap .2s}
+    .llink:hover{gap:8px}
+    .rec-c{background:var(--white);border-radius:var(--rs);padding:18px;box-shadow:var(--sh);margin-bottom:14px}
+    .rec-c h4{font-family:var(--fd);font-size:1.05rem;margin-bottom:10px;display:flex;align-items:center;gap:7px}
+    .rec-c ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+    .rec-c li{font-size:.8rem;color:var(--textl);line-height:1.45;padding-left:14px;position:relative}
+    .rec-c li::before{content:'—';position:absolute;left:0;color:var(--caramel);font-size:.68rem}
+    .tip{background:linear-gradient(135deg,#FFF5EE,#F9EDE8);border-left:3px solid var(--caramel);border-radius:0 var(--rs) var(--rs) 0;padding:13px 16px;font-size:.8rem;color:var(--textl);line-height:1.6}
+    .tip strong{color:var(--caramel)}
 
-    /* Category pills */
-    .category-pills {
-      display: flex; gap: 10px; flex-wrap: wrap;
-    }
-    .pill {
-      padding: 9px 22px;
-      border-radius: 50px;
-      border: 1.5px solid var(--cream);
-      background: transparent;
-      font-family: var(--font-body);
-      font-size: 0.82rem; font-weight: 500;
-      color: var(--text-light);
-      cursor: pointer;
-      transition: all 0.25s;
-      letter-spacing: 0.04em;
-    }
-    .pill.active, .pill:hover {
-      background: var(--caramel);
-      border-color: var(--caramel);
-      color: #FDF8F4;
-    }
+    /* FOOTER */
+    footer{background:var(--text);color:rgba(253,248,244,.45);text-align:center;padding:28px 40px;font-size:.76rem;letter-spacing:.06em}
+    footer strong{color:rgba(253,248,244,.82)}
 
-    /* Category label */
-    .category-section { margin-bottom: 60px; }
-    .category-label {
-      display: flex; align-items: center; gap: 16px;
-      margin-bottom: 28px;
-    }
-    .category-label h2 {
-      font-family: var(--font-display);
-      font-size: 1.8rem; font-weight: 400;
-      color: var(--text);
-    }
-    .category-label h2 em { font-style: italic; color: var(--caramel); }
-    .category-line {
-      flex: 1; height: 1px; background: var(--cream);
-    }
-    .category-badge {
-      font-size: 0.7rem; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      background: var(--cream); color: var(--text-light);
-      padding: 4px 12px; border-radius: 20px;
-    }
-
-    /* Trip cards grid */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 24px;
-    }
-
-    /* Trip card */
-    .trip-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-      animation: cardIn 0.5s both;
-    }
-    .trip-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-lg);
-    }
-    @keyframes cardIn {
-      from { opacity:0; transform: translateY(20px); }
-      to   { opacity:1; transform: translateY(0); }
-    }
-    .card-img-wrap {
-      position: relative; height: 220px; overflow: hidden;
-    }
-    .card-img-wrap img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s;
-    }
-    .trip-card:hover .card-img-wrap img { transform: scale(1.06); }
-    .card-tag {
-      position: absolute; top: 14px; left: 14px;
-      background: rgba(250,247,242,0.92);
-      backdrop-filter: blur(6px);
-      border-radius: 20px; padding: 4px 12px;
-      font-size: 0.68rem; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--dusty);
-    }
-    .card-emoji {
-      position: absolute; top: 14px; right: 14px;
-      font-size: 1.4rem;
-      width: 38px; height: 38px;
-      background: rgba(250,247,242,0.92);
-      border-radius: 50%; display: flex;
-      align-items: center; justify-content: center;
-    }
-    .card-body { padding: 22px 24px 26px; }
-    .card-dest {
-      font-family: var(--font-display);
-      font-size: 1.5rem; font-weight: 400;
-      margin-bottom: 6px;
-    }
-    .card-dates {
-      font-size: 0.78rem; color: var(--text-light);
-      letter-spacing: 0.05em; margin-bottom: 14px;
-      display: flex; align-items: center; gap: 6px;
-    }
-    .card-dates::before { content: '📅'; font-size: 0.8rem; }
-    .card-price-row {
-      display: flex; align-items: center;
-      justify-content: space-between;
-      padding-top: 14px;
-      border-top: 1px solid var(--bg2);
-    }
-    .card-price {
-      font-family: var(--font-display);
-      font-size: 1.4rem; font-weight: 600;
-      color: var(--caramel);
-    }
-    .card-price-label {
-      font-size: 0.7rem; color: var(--text-light);
-      letter-spacing: 0.06em;
-    }
-    .card-btn {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 0.78rem; font-weight: 500;
-      color: var(--dusty); letter-spacing: 0.05em;
-      transition: gap 0.2s;
-    }
-    .trip-card:hover .card-btn { gap: 10px; }
-    .card-pills {
-      display: flex; flex-wrap: wrap; gap: 6px;
-      margin-bottom: 14px;
-    }
-    .card-pill {
-      font-size: 0.68rem; font-weight: 500;
-      padding: 3px 10px; border-radius: 20px;
-      background: var(--bg2); color: var(--text-light);
-    }
-
-    /* ─── MODAL ─────────────────────────────────────────────── */
-    .modal-overlay {
-      position: fixed; inset: 0; z-index: 200;
-      background: rgba(46,31,23,0.55);
-      backdrop-filter: blur(4px);
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.35s;
-      display: flex; align-items: flex-end;
-      justify-content: center;
-    }
-    .modal-overlay.open {
-      opacity: 1; pointer-events: all;
-    }
-    .modal {
-      width: 100%; max-width: 800px;
-      max-height: 92vh;
-      background: var(--bg);
-      border-radius: 28px 28px 0 0;
-      overflow: hidden;
-      display: flex; flex-direction: column;
-      transform: translateY(100%);
-      transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
-    }
-    .modal-overlay.open .modal {
-      transform: translateY(0);
-    }
-
-    /* Modal hero */
-    .modal-hero {
-      position: relative; height: 260px; flex-shrink: 0;
-    }
-    .modal-hero-img {
-      width: 100%; height: 100%; object-fit: cover;
-    }
-    .modal-hero-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(46,31,23,0.75) 0%, transparent 60%);
-    }
-    .modal-hero-content {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 20px 30px;
-    }
-    .modal-category-tag {
-      display: inline-block;
-      font-size: 0.65rem; font-weight: 500;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--blush);
-      border: 1px solid rgba(232,201,192,0.5);
-      padding: 4px 12px; border-radius: 20px;
-      margin-bottom: 8px;
-    }
-    .modal-title {
-      font-family: var(--font-display);
-      font-size: 2.4rem; font-weight: 300;
-      color: #FDF8F4; line-height: 1.1;
-    }
-    .modal-close {
-      position: absolute; top: 16px; right: 16px;
-      width: 36px; height: 36px;
-      background: rgba(250,247,242,0.9);
-      backdrop-filter: blur(6px);
-      border: none; border-radius: 50%;
-      font-size: 1rem; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s, transform 0.2s;
-      z-index: 10;
-    }
-    .modal-close:hover { background: var(--white); transform: rotate(90deg); }
-
-    /* Modal tabs */
-    .modal-tabs {
-      display: flex; gap: 0;
-      background: var(--white);
-      border-bottom: 1px solid var(--cream);
-      overflow-x: auto;
-      flex-shrink: 0;
-    }
-    .modal-tabs::-webkit-scrollbar { height: 0; }
-    .tab-btn {
-      padding: 14px 20px;
-      border: none; background: none;
-      font-family: var(--font-body);
-      font-size: 0.78rem; font-weight: 500;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      color: var(--text-light);
-      cursor: pointer;
-      position: relative;
-      white-space: nowrap;
-      transition: color 0.2s;
-    }
-    .tab-btn::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0;
-      height: 2px; background: var(--caramel);
-      transform: scaleX(0); transition: transform 0.25s;
-    }
-    .tab-btn.active { color: var(--caramel); }
-    .tab-btn.active::after { transform: scaleX(1); }
-
-    /* Modal body */
-    .modal-body {
-      overflow-y: auto;
-      flex: 1;
-      padding: 0;
-    }
-
-    .tab-panel { display: none; padding: 30px; }
-    .tab-panel.active { display: block; }
-
-    /* Info row */
-    .info-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 14px; margin-bottom: 28px;
-    }
-    .info-card {
-      background: var(--white);
-      border-radius: var(--radius-sm);
-      padding: 18px 20px;
-      box-shadow: var(--shadow);
-    }
-    .info-card-icon { font-size: 1.4rem; margin-bottom: 8px; }
-    .info-card-label {
-      font-size: 0.68rem; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--text-light); margin-bottom: 4px;
-    }
-    .info-card-value {
-      font-family: var(--font-display);
-      font-size: 1.2rem; font-weight: 400; color: var(--text);
-    }
-
-    /* Itinerary */
-    .itinerary-day {
-      display: flex; gap: 18px;
-      margin-bottom: 24px;
-    }
-    .day-num {
-      flex-shrink: 0;
-      width: 44px; height: 44px;
-      background: var(--caramel);
-      color: #FDF8F4;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display);
-      font-size: 1.1rem; font-weight: 600;
-    }
-    .day-content { flex: 1; }
-    .day-title {
-      font-family: var(--font-display);
-      font-size: 1.15rem; font-weight: 400;
-      margin-bottom: 6px; color: var(--text);
-    }
-    .day-desc {
-      font-size: 0.84rem; color: var(--text-light);
-      line-height: 1.65;
-    }
-    .day-activities {
-      margin-top: 8px;
-      display: flex; flex-wrap: wrap; gap: 6px;
-    }
-    .activity-tag {
-      font-size: 0.7rem; padding: 3px 10px;
-      background: var(--bg2); color: var(--text-light);
-      border-radius: 20px;
-    }
-
-    /* Costs */
-    .cost-total-banner {
-      background: linear-gradient(135deg, var(--caramel), var(--dusty));
-      border-radius: var(--radius);
-      padding: 28px 30px;
-      color: #FDF8F4;
-      margin-bottom: 24px;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .cost-total-label {
-      font-size: 0.75rem; letter-spacing: 0.1em;
-      text-transform: uppercase; opacity: 0.8;
-      margin-bottom: 4px;
-    }
-    .cost-total-amount {
-      font-family: var(--font-display);
-      font-size: 2.8rem; font-weight: 300; line-height: 1;
-    }
-    .cost-total-note { font-size: 0.8rem; opacity: 0.7; }
-    .cost-total-icon { font-size: 2.5rem; opacity: 0.6; }
-
-    .cost-row {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 0;
-      border-bottom: 1px solid var(--bg2);
-    }
-    .cost-row:last-child { border-bottom: none; }
-    .cost-row-left { display: flex; align-items: center; gap: 14px; }
-    .cost-icon {
-      width: 40px; height: 40px;
-      background: var(--bg2);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-    }
-    .cost-name { font-size: 0.88rem; font-weight: 500; color: var(--text); }
-    .cost-note { font-size: 0.75rem; color: var(--text-light); }
-    .cost-amount {
-      font-family: var(--font-display);
-      font-size: 1.3rem; font-weight: 400; color: var(--caramel);
-    }
-
-    /* Alojamiento */
-    .lodging-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      margin-bottom: 18px;
-      display: flex; gap: 0;
-    }
-    .lodging-img {
-      width: 130px; flex-shrink: 0;
-      object-fit: cover;
-    }
-    .lodging-body { padding: 18px 20px; flex: 1; }
-    .lodging-name {
-      font-family: var(--font-display);
-      font-size: 1.1rem; margin-bottom: 4px;
-    }
-    .lodging-loc {
-      font-size: 0.75rem; color: var(--text-light);
-      margin-bottom: 8px;
-      display: flex; align-items: center; gap: 4px;
-    }
-    .lodging-desc {
-      font-size: 0.8rem; color: var(--text-light);
-      line-height: 1.55; margin-bottom: 12px;
-    }
-    .lodging-footer {
-      display: flex; align-items: center;
-      justify-content: space-between;
-    }
-    .lodging-price {
-      font-family: var(--font-display);
-      font-size: 1.2rem; color: var(--caramel);
-    }
-    .lodging-price span {
-      font-family: var(--font-body);
-      font-size: 0.7rem; color: var(--text-light);
-    }
-    .lodging-link {
-      font-size: 0.75rem; font-weight: 500;
-      color: var(--dusty); display: flex;
-      align-items: center; gap: 4px;
-      transition: gap 0.2s;
-    }
-    .lodging-link:hover { gap: 8px; }
-    .lodging-badge {
-      display: inline-flex; align-items: center; gap: 4px;
-      font-size: 0.68rem; font-weight: 500;
-      padding: 3px 10px; border-radius: 20px;
-      margin-bottom: 8px;
-    }
-    .badge-air { background: #FFE8D6; color: #C4956A; }
-    .badge-book { background: #D6E8F5; color: #4A7FA5; }
-
-    /* Food & Nights */
-    .recom-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 14px; margin-bottom: 20px;
-    }
-    .recom-card {
-      background: var(--white); border-radius: var(--radius-sm);
-      padding: 18px; box-shadow: var(--shadow);
-    }
-    .recom-card h4 {
-      font-family: var(--font-display);
-      font-size: 1.05rem; margin-bottom: 10px;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .recom-card ul {
-      list-style: none; display: flex; flex-direction: column; gap: 7px;
-    }
-    .recom-card li {
-      font-size: 0.82rem; color: var(--text-light);
-      line-height: 1.45;
-      padding-left: 14px; position: relative;
-    }
-    .recom-card li::before {
-      content: '—'; position: absolute; left: 0;
-      color: var(--caramel); font-size: 0.7rem;
-    }
-    .tip-box {
-      background: linear-gradient(135deg, #FFF5EE, #F9EDE8);
-      border-left: 3px solid var(--caramel);
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      padding: 14px 18px;
-      font-size: 0.82rem; color: var(--text-light);
-      line-height: 1.6;
-    }
-    .tip-box strong { color: var(--caramel); }
-
-    /* ─── ABOUT SECTION ─────────────────────────────────────── */
-    #nosotras {
-      background: var(--dusty);
-      color: #FDF8F4;
-      text-align: center;
-    }
-    #nosotras .section-tag { color: var(--blush); }
-    #nosotras .section-title { color: #FDF8F4; }
-    #nosotras .section-desc { color: rgba(253,248,244,0.75); margin: 0 auto; }
-    .nosotras-row {
-      display: flex; justify-content: center; gap: 40px;
-      margin-top: 40px; flex-wrap: wrap;
-    }
-    .nosotras-item {
-      display: flex; flex-direction: column; align-items: center; gap: 10px;
-    }
-    .nosotras-avatar {
-      width: 70px; height: 70px; border-radius: 50%;
-      background: rgba(232,201,192,0.25);
-      border: 2px solid rgba(232,201,192,0.4);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.6rem;
-    }
-    .nosotras-name {
-      font-family: var(--font-display);
-      font-size: 1rem; font-style: italic;
-    }
-
-    /* ─── FOOTER ────────────────────────────────────────────── */
-    footer {
-      background: var(--text);
-      color: rgba(253,248,244,0.5);
-      text-align: center;
-      padding: 30px 40px;
-      font-size: 0.78rem;
-      letter-spacing: 0.06em;
-    }
-    footer strong { color: rgba(253,248,244,0.85); }
-
-    /* ─── HIDDEN UTIL ───────────────────────────────────────── */
-    .hidden { display: none !important; }
-
-    /* ─── RESPONSIVE ────────────────────────────────────────── */
-    @media (max-width: 700px) {
-      nav { padding: 14px 20px; }
-      .nav-links { display: none; }
-      section { padding: 60px 20px; }
-      .hero-content { padding: 0 24px 56px; }
-      .scroll-hint { right: 20px; }
-      .trips-header { flex-direction: column; align-items: flex-start; }
-      .info-grid { grid-template-columns: 1fr; }
-      .recom-grid { grid-template-columns: 1fr; }
-      .lodging-card { flex-direction: column; }
-      .lodging-img { width: 100%; height: 160px; }
-      .cost-total-banner { flex-direction: column; gap: 14px; text-align: center; }
-      .modal-hero { height: 200px; }
-      .modal-title { font-size: 1.8rem; }
-      .tab-panel { padding: 20px; }
-      .intro-divider { display: none; }
-      .intro-strip { gap: 24px; }
+    /* RESPONSIVE */
+    @media(max-width:680px){
+      nav{padding:13px 18px}
+      .nav-links{display:none}
+      .trips-sec{padding:52px 18px}
+      .hero-ct{padding:0 22px 54px}
+      .scrl{right:18px}
+      .info-grid{grid-template-columns:1fr}
+      .lodge-c{flex-direction:column}
+      .lodge-img{width:100%;height:150px}
+      .cost-ban{flex-direction:column;gap:10px;text-align:center}
+      .modal-hero{height:190px}
+      .modal-h2{font-size:1.75rem}
+      .tab-panel{padding:18px}
+      .strip{gap:22px}
+      .sd{display:none}
+      .vote-card{padding:22px 18px}
     }
   </style>
 </head>
 <body>
 
-<!-- ─── NAV ──────────────────────────────────────────────────── -->
 <nav>
-  <div class="nav-logo">viajes <span>& amigas</span></div>
+  <div class="nav-logo">viajes <em>& amigas</em></div>
   <ul class="nav-links">
-    <li><a href="#viajes">Viajes</a></li>
-    <li><a href="#nosotras">Nosotras</a></li>
+    <li><a href="#viajes">Destinos</a></li>
+    <li><a href="#vote-mitad">Votar</a></li>
   </ul>
 </nav>
 
-<!-- ─── HERO ─────────────────────────────────────────────────── -->
 <section class="hero" id="home">
   <img class="hero-img" src="hero-photo.png" alt="Amigas de viaje" />
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-tag">✨ 10 amigas · Mendoza, Argentina</div>
-    <h1 class="hero-title">Viajes con<br><em>amigas</em></h1>
-    <p class="hero-subtitle">Organizamos juntas los mejores viajes del año. Vuelos, alojamiento y todo lo que necesitás saber en un solo lugar.</p>
-    <button class="btn-primary" onclick="document.getElementById('viajes').scrollIntoView({behavior:'smooth'})">
-      Ver viajes <span class="arrow">→</span>
+  <div class="hero-ov"></div>
+  <div class="hero-ct">
+    <div class="hero-chip">✨ 10 amigas · Mendoza, Argentina</div>
+    <h1 class="hero-h1">Viajes con<br><em>amigas</em></h1>
+    <p class="hero-sub">Organizamos juntas los mejores viajes del año. Todo lo que necesitás saber en un solo lugar.</p>
+    <button class="btn-hero" onclick="document.getElementById('viajes').scrollIntoView({behavior:'smooth'})">
+      Ver destinos <span class="arr">→</span>
     </button>
   </div>
-  <div class="scroll-hint">
-    <div class="scroll-line"></div>
-    scroll
-  </div>
+  <div class="scrl"><div class="scrl-bar"></div>scroll</div>
 </section>
 
-<!-- ─── INTRO STRIP ───────────────────────────────────────────── -->
-<div class="intro-strip">
-  <div class="intro-stat">
-    <strong>2</strong>
-    <span>Temporadas</span>
+<div class="strip">
+  <div class="ss"><strong>2</strong><span>Temporadas</span></div>
+  <div class="sd"></div>
+  <div class="ss"><strong>5</strong><span>Destinos</span></div>
+  <div class="sd"></div>
+  <div class="ss"><strong>10</strong><span>Amigas</span></div>
+  <div class="sd"></div>
+  <div class="ss"><strong>∞</strong><span>Recuerdos</span></div>
+</div>
+
+<div class="trips-sec" id="viajes">
+
+  <!-- MITAD DE AÑO -->
+  <div class="cat-block">
+    <div class="cat-hd">
+      <div class="cat-badge">☀️ julio – agosto</div>
+      <h2 class="cat-nm"><em>Mitad</em> de año</h2>
+      <div class="cat-ln"></div>
+    </div>
+    <div class="cards-grid" id="grid-mitad"></div>
+    <!-- VOTE -->
+    <div class="vote-card" id="vote-mitad">
+      <div class="vote-hd">
+        <div class="vote-ico">🗳️</div>
+        <div>
+          <div class="vote-title">¿A dónde vamos en julio?</div>
+          <div class="vote-desc">Elegí tu destino favorito. Los votos se guardan automáticamente.</div>
+        </div>
+      </div>
+      <div class="vote-opts" id="opts-mitad"></div>
+      <div class="vote-actions">
+        <button class="btn-vote" id="btn-mitad" onclick="submitVote('mitad')">Confirmar voto</button>
+        <button class="btn-reset" onclick="resetVote('mitad')">Cambiar voto</button>
+      </div>
+      <div class="vote-note" id="note-mitad"></div>
+    </div>
   </div>
-  <div class="intro-divider"></div>
-  <div class="intro-stat">
-    <strong>5</strong>
-    <span>Destinos</span>
-  </div>
-  <div class="intro-divider"></div>
-  <div class="intro-stat">
-    <strong>10</strong>
-    <span>Amigas</span>
-  </div>
-  <div class="intro-divider"></div>
-  <div class="intro-stat">
-    <strong>∞</strong>
-    <span>Recuerdos</span>
+
+  <!-- VACACIONES -->
+  <div class="cat-block">
+    <div class="cat-hd">
+      <div class="cat-badge">🌊 enero · 1ª quincena</div>
+      <h2 class="cat-nm"><em>Vacaciones</em></h2>
+      <div class="cat-ln"></div>
+    </div>
+    <div class="cards-grid" id="grid-vacaciones"></div>
+    <!-- VOTE -->
+    <div class="vote-card" id="vote-vacaciones">
+      <div class="vote-hd">
+        <div class="vote-ico">🗳️</div>
+        <div>
+          <div class="vote-title">¿A dónde vamos en enero?</div>
+          <div class="vote-desc">Elegí tu destino favorito. Los votos se guardan automáticamente.</div>
+        </div>
+      </div>
+      <div class="vote-opts" id="opts-vacaciones"></div>
+      <div class="vote-actions">
+        <button class="btn-vote" id="btn-vacaciones" onclick="submitVote('vacaciones')">Confirmar voto</button>
+        <button class="btn-reset" onclick="resetVote('vacaciones')">Cambiar voto</button>
+      </div>
+      <div class="vote-note" id="note-vacaciones"></div>
+    </div>
   </div>
 </div>
 
-<!-- ─── TRIPS SECTION ─────────────────────────────────────────── -->
-<section id="viajes">
-  <div class="trips-header">
-    <div>
-      <div class="section-tag">✈️ Destinos</div>
-      <h2 class="section-title">Elegimos <em>juntas</em></h2>
-      <p class="section-desc">Dos temporadas, cinco destinos increíbles. Explorá las opciones y votá tu favorito.</p>
-    </div>
-    <div class="category-pills">
-      <button class="pill active" onclick="filterCategory('all', this)">Todos</button>
-      <button class="pill" onclick="filterCategory('mitad', this)">Mitad de Año</button>
-      <button class="pill" onclick="filterCategory('vacaciones', this)">Vacaciones</button>
-    </div>
-  </div>
+<footer><strong>Viajes & Amigas</strong> · Mendoza, Argentina · 2025–2026 ✈️</footer>
 
-  <!-- Mitad de año -->
-  <div class="category-section" id="cat-mitad">
-    <div class="category-label">
-      <div class="category-badge">☀️ julio – agosto</div>
-      <h2><em>Mitad</em> de año</h2>
-      <div class="category-line"></div>
-    </div>
-    <div class="cards-grid" id="grid-mitad"></div>
-  </div>
-
-  <!-- Vacaciones -->
-  <div class="category-section" id="cat-vacaciones">
-    <div class="category-label">
-      <div class="category-badge">🌊 enero</div>
-      <h2><em>Vacaciones</em></h2>
-      <div class="category-line"></div>
-    </div>
-    <div class="cards-grid" id="grid-vacaciones"></div>
-  </div>
-</section>
-
-<!-- ─── NOSOTRAS ──────────────────────────────────────────────── -->
-<section id="nosotras">
-  <div class="section-tag">💛 El grupo</div>
-  <h2 class="section-title">Nosotras</h2>
-  <p class="section-desc">10 amigas, una pasión: viajar juntas y hacer los mejores recuerdos de nuestra vida.</p>
-  <div class="nosotras-row">
-    <div class="nosotras-item"><div class="nosotras-avatar">🌸</div><div class="nosotras-name">Sol</div></div>
-    <div class="nosotras-item"><div class="nosotras-avatar">🌿</div><div class="nosotras-name">Amiga 2</div></div>
-    <div class="nosotras-item"><div class="nosotras-avatar">🦋</div><div class="nosotras-name">Amiga 3</div></div>
-    <div class="nosotras-item"><div class="nosotras-avatar">🌻</div><div class="nosotras-name">Amiga 4</div></div>
-    <div class="nosotras-item"><div class="nosotras-avatar">🍃</div><div class="nosotras-name">Amiga 5</div></div>
-    <div class="nosotras-item"><div class="nosotras-avatar">🌺</div><div class="nosotras-name">Amiga 6</div></div>
-    <div class="nosotras-item"><div class="nosotras-avatar">🌙</div><div class="nosotras-name">Amiga 7</div></div>
-    <div class="nosotras-item"><div class="nosotras-avatar">⭐</div><div class="nosotras-name">Amiga 8</div></div>
-    <div class="nosotras-item"><div class="nosotras-avatar">🎀</div><div class="nosotras-name">Amiga 9</div></div>
-    <div class="nosotras-item"><div class="nosotras-avatar">🍂</div><div class="nosotras-name">Amiga 10</div></div>
-  </div>
-</section>
-
-<!-- ─── FOOTER ────────────────────────────────────────────────── -->
-<footer>
-  <strong>Viajes & Amigas</strong> · Mendoza, Argentina · 2025–2026 ✈️
-</footer>
-
-<!-- ─── MODAL ─────────────────────────────────────────────────── -->
-<div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)">
-  <div class="modal" id="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
+<!-- MODAL -->
+<div class="modal-ov" id="modal-ov" onclick="handleOv(event)">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal()">✕</button>
     <div class="modal-hero">
-      <img class="modal-hero-img" id="modal-img" src="" alt="" />
-      <div class="modal-hero-overlay"></div>
-      <div class="modal-hero-content">
-        <div class="modal-category-tag" id="modal-cat-tag"></div>
-        <h2 class="modal-title" id="modal-title"></h2>
+      <img id="m-img" src="" alt="" />
+      <div class="modal-grad"></div>
+      <div class="modal-ht">
+        <div class="modal-chip" id="m-chip"></div>
+        <h2 class="modal-h2" id="m-title"></h2>
       </div>
     </div>
     <div class="modal-tabs">
-      <button class="tab-btn active" onclick="switchTab('itinerario', this)">📅 Itinerario</button>
-      <button class="tab-btn" onclick="switchTab('costos', this)">💸 Costos</button>
-      <button class="tab-btn" onclick="switchTab('alojamiento', this)">🏠 Alojamiento</button>
-      <button class="tab-btn" onclick="switchTab('comida', this)">🍽️ Comida</button>
-      <button class="tab-btn" onclick="switchTab('salidas', this)">🍹 Salidas</button>
+      <button class="tab-btn active" onclick="switchTab('itinerario',this)">📅 Itinerario</button>
+      <button class="tab-btn" onclick="switchTab('costos',this)">💸 Costos</button>
+      <button class="tab-btn" onclick="switchTab('alojamiento',this)">🏠 Alojamiento</button>
+      <button class="tab-btn" onclick="switchTab('comida',this)">🍽️ Comida</button>
+      <button class="tab-btn" onclick="switchTab('salidas',this)">🍹 Salidas</button>
     </div>
     <div class="modal-body">
       <div class="tab-panel active" id="tab-itinerario"></div>
@@ -882,495 +331,186 @@
   </div>
 </div>
 
-<!-- ─────────────────────────────────────────────────────────────
-     DATA & LOGIC
-──────────────────────────────────────────────────────────────── -->
 <script>
+/* ════════ DATA ════════ */
+const trips=[
+  {id:"vina",category:"mitad",destination:"Viña del Mar",country:"Chile 🇨🇱",emoji:"🌊",dates:"Julio / Agosto · 4 días",image:"https://images.unsplash.com/photo-1596422846543-75c6fc197f11?w=600&q=80",tags:["Playa","Ciudad","Paseos"],pricePerPerson:"$280.000",
+  itinerary:[{day:1,title:"Llegada y Valparaíso",desc:"Llegamos a Santiago y tomamos bus a Viña (~1h30). Tarde en los cerros de Valparaíso.",activities:["Cerro Alegre","Graffitis","Cena en el puerto"]},{day:2,title:"Playa y Relax",desc:"Mañana de playa. Tarde libre: casino, Av. Perú y helados.",activities:["Playa principal","Av. Perú","Casino","Helados Bavaria"]},{day:3,title:"Jardín y Cultura",desc:"Jardín Botánico, Castillo Wulff. Noche en el centro de Viña.",activities:["Jardín Botánico","Castillo Wulff","Plaza Sucre"]},{day:4,title:"Regreso",desc:"Compras en la feria artesanal y vuelta a Mendoza.",activities:["Feria artesanal","Souvenirs","🏠"]}],
+  costs:{total:"$280.000",totalNote:"por persona · estimado",items:[{icon:"✈️",name:"Vuelo Mendoza – Santiago",note:"Ida y vuelta",amount:"$95.000"},{icon:"🚌",name:"Bus Santiago – Viña",note:"Ida y vuelta",amount:"$18.000"},{icon:"🏠",name:"Alojamiento (3 noches)",note:"Por persona",amount:"$90.000"},{icon:"🍔",name:"Comida",note:"Estimado x3 días",amount:"$45.000"},{icon:"🎡",name:"Actividades y salidas",note:"Estimado",amount:"$32.000"}]},
+  lodgings:[{name:"Apart Hotel Las Dalias",badge:"book",loc:"📍 A 2 cuadras de la playa",desc:"Departamento cómodo con cocina, terraza y estacionamiento.",price:"$42.000",priceNote:"/ persona / noche",link:"https://www.booking.com",img:"https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=200&q=80"},{name:"Airbnb Casa Viña",badge:"air",loc:"📍 Barrio Forestal",desc:"Casa completa para 10 personas, living amplio, asado y jardín.",price:"$35.000",priceNote:"/ persona / noche",link:"https://www.airbnb.com",img:"https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=200&q=80"}],
+  food:{budget:"~$12.000–15.000 por persona/día",places:["Divinus – mediterránea frente al mar","El Pimentón – cazuelas típicas","Feria Artesanal – desayunos económicos","Heladería Bavaria – clásico indispensable","Mercado del Mar – mariscos frescos"],tip:"💡 El Jumbo queda cerca del centro, ideal para comprar desayunos y picadas para la playa y ahorrar plata."},
+  nights:{places:["Divinus Club – boliche frente al mar","Café Journal – música en vivo","The Clinic – cervecería artesanal","Casino de Viña del Mar 🎰"],tip:"💡 El casino tiene entrada libre, es ideal para pasar una noche diferente."}},
 
-/* ════════════════════════════════════════════════════════════
-   📦  DATOS DE VIAJES
-   Para agregar un viaje nuevo: copiá un objeto y modificalo.
-════════════════════════════════════════════════════════════ */
-const trips = [
+  {id:"norte",category:"mitad",destination:"Norte Argentino",country:"Argentina 🇦🇷",emoji:"🏜️",dates:"Julio / Agosto · 4 días",image:"https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=600&q=80",tags:["Cultura","Naturaleza","Salinas"],pricePerPerson:"$210.000",
+  itinerary:[{day:1,title:"Llegada a Salta",desc:"Vuelo directo. Centro histórico: Cabildo, Catedral y Peatonal Alberdi.",activities:["Cabildo","Catedral","Peña folclórica"]},{day:2,title:"Salinas Grandes",desc:"Excursión a las Salinas Grandes (3.400 msnm). Las fotos más épicas.",activities:["Salinas Grandes","Purmamarca","Cerro 7 colores"]},{day:3,title:"Quebrada de Humahuaca",desc:"Patrimonio UNESCO. Tilcara, Pucará y artesanías.",activities:["Pucará de Tilcara","Museo folklórico","Artesanías"]},{day:4,title:"Cafayate",desc:"Bodegas y torrontés. Quebrada de las Conchas.",activities:["Bodega Nanni","Garganta del Diablo","🏠"]}],
+  costs:{total:"$210.000",totalNote:"por persona · estimado",items:[{icon:"✈️",name:"Vuelo Mendoza – Salta",note:"Ida y vuelta",amount:"$80.000"},{icon:"🚐",name:"Excursiones y traslados",note:"Salinas + Quebrada + Cafayate",amount:"$40.000"},{icon:"🏠",name:"Alojamiento (3 noches)",note:"Por persona",amount:"$45.000"},{icon:"🍔",name:"Comida",note:"Estimado x3 días",amount:"$30.000"},{icon:"🎡",name:"Actividades y salidas",note:"Estimado",amount:"$15.000"}]},
+  lodgings:[{name:"Hostel Salta Colonial",badge:"book",loc:"📍 Centro histórico",desc:"Patio colonial, ambiente festivo. Desayuno incluido.",price:"$18.000",priceNote:"/ persona / noche",link:"https://www.booking.com",img:"https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=200&q=80"},{name:"Airbnb Casa en Tilcara",badge:"air",loc:"📍 Tilcara, Quebrada",desc:"Casa rústica con patio y vista a los cerros. Fogón para las noches frías.",price:"$22.000",priceNote:"/ persona / noche",link:"https://www.airbnb.com",img:"https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=200&q=80"}],
+  food:{budget:"~$8.000–12.000 por persona/día",places:["La Vieja Estación – empanadas salteñas","El Solar del Convento – cocina norteña","Mercado Central – locro y humitas","Bodegas Etchart – empanada + vino","Las Escaleras – vista al valle"],tip:"💡 Las empanadas salteñas son las mejores del país. Probalas en el Mercado Central."},
+  nights:{places:["Peña La Casona del Molino – folclore en vivo","Macondo Bar – cocktails en la plaza","Boliche La Vieja Usina – el más animado"],tip:"💡 Las peñas folclóricas son una experiencia única aunque no seas fanática del folklore."}},
 
-  /* ── VIÑA DEL MAR ───────────────────────────────────────── */
-  {
-    id: "vina",
-    category: "mitad",
-    destination: "Viña del Mar",
-    country: "Chile 🇨🇱",
-    emoji: "🌊",
-    dates: "Julio / Agosto · 4 días",
-    image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f11?w=600&q=80",
-    tags: ["Playa", "Ciudad", "Paseos"],
-    pricePerPerson: "$280.000",
-    currency: "ARS",
-    itinerary: [
-      { day: 1, title: "Llegada y Valparaíso", desc: "Llegamos al aeropuerto de Santiago, tomamos un bus a Viña del Mar (~1h30). Por la tarde, recorremos los famosos cerros y el puerto de Valparaíso.", activities: ["Cerro Alegre", "Graffitis", "Cena en el puerto"] },
-      { day: 2, title: "Playa y Relax", desc: "Mañana de playa en Playa de Viña. Tarde libre para recorrer el casino, la av. Perú y los helados famosos del lugar.", activities: ["Playa principal", "Av. Perú", "Casino", "Helados"] },
-      { day: 3, title: "Jardín y Cultura", desc: "Visitamos el Jardín Botánico y el Castillo Wulff. Por la noche, salida por el centro de Viña.", activities: ["Jardín Botánico", "Castillo Wulff", "Plaza Sucre"] },
-      { day: 4, title: "Regreso", desc: "Mañana libre, compritas en la feria artesanal y vuelta a Mendoza por la tarde.", activities: ["Feria artesanal", "Souvenir", "Vuelta a casa"] }
-    ],
-    costs: {
-      total: "$280.000",
-      totalNote: "por persona · todo incluido estimado",
-      items: [
-        { icon: "✈️", name: "Vuelo Mendoza – Santiago", note: "Ida y vuelta", amount: "$95.000" },
-        { icon: "🚌", name: "Bus Santiago – Viña", note: "Ida y vuelta", amount: "$18.000" },
-        { icon: "🏠", name: "Alojamiento (3 noches)", note: "Precio por persona", amount: "$90.000" },
-        { icon: "🍔", name: "Comida", note: "Estimado por día x3", amount: "$45.000" },
-        { icon: "🎡", name: "Actividades y salidas", note: "Estimado", amount: "$32.000" }
-      ]
-    },
-    lodgings: [
-      { name: "Apart Hotel Las Dalias", badge: "book", loc: "📍 A 2 cuadras de la playa", desc: "Departamento cómodo con cocina equipada, ideal para grupos. Tiene terraza compartida y estacionamiento.", price: "$42.000", priceNote: "/ persona / noche", link: "https://www.booking.com", img: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=200&q=80" },
-      { name: "Airbnb Casa Viña", badge: "air", loc: "📍 Barrio Forestal, cerca del casino", desc: "Casa completa para 10 personas, amplio living, asado y jardín. Ambiente muy hogareño.", price: "$35.000", priceNote: "/ persona / noche", link: "https://www.airbnb.com", img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=200&q=80" }
-    ],
-    food: {
-      budget: "~$12.000–15.000 por persona/día",
-      places: ["Divinus Restaurant – cocina mediterránea frente al mar", "El Pimentón – sandwichs y cazuelas típicas", "Feria Artesanal Viña – desayunos económicos", "Heladería Bavaria – clásico indispensable", "Mercado del Mar – mariscos frescos"],
-      tip: "💡 El supermercado Jumbo queda cerca del centro, ideal para comprar desayunos y picadas para la playa y ahorrar plata."
-    },
-    nights: {
-      places: ["Divinus Club – boliche frente al mar", "Café Journal – bar con música en vivo", "The Clinic – cervecería artesanal", "Casino de Viña del Mar – para curiosear 🎰"],
-      tip: "💡 El casino tiene entrada libre, es ideal para pasar una noche diferente aunque no apostés."
-    }
-  },
+  {id:"brasil",category:"vacaciones",destination:"Brasil",country:"Brasil 🇧🇷",emoji:"🌴",dates:"Enero · 1ª quincena · 10 días",image:"https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=600&q=80",tags:["Playa","Fiesta","Electrónica"],pricePerPerson:"$850.000",
+  itinerary:[{day:1,title:"Llegada a Floripa",desc:"Vuelo a Florianópolis. Primer atardecer en la isla.",activities:["Check-in","Centro histórico","Atardecer"]},{day:2,title:"Praia Mole y Joaquina",desc:"Las playas más famosas. Noche en Lagoa da Conceição.",activities:["Praia Mole","Joaquina","Lagoa"]},{day:3,title:"Jurerê Internacional",desc:"La playa más exclusiva. Beach clubs y sunset.",activities:["Jurerê Intl.","Beach club","Sunset"]},{day:4,title:"Bombinhas",desc:"Excursión. Aguas transparentes para snorkeling.",activities:["Snorkeling","Playa Bombas","Barco"]},{day:5,title:"Día libre Floripa",desc:"Santo Antônio de Lisboa y feria de artesanías.",activities:["Sto. Antônio","Feria","Relax"]},{day:6,title:"Balneário Camboriú",desc:"La Las Vegas del sur. Bond Bond y teleférico.",activities:["Teleférico","BC","Noche"]},{day:7,title:"Praia de Laranjeiras",desc:"Agua verde esmeralda. Tarde en el shopping.",activities:["Laranjeiras","Barco","Shopping"]},{day:8,title:"Bond Bond Night",desc:"El boliche más famoso de Latinoamérica.",activities:["Pre-party","Bond Bond","Amanecer"]},{day:9,title:"Último día",desc:"Último sol, água de coco y cena de cierre.",activities:["Playa central","Souvenirs","Cena grupal"]},{day:10,title:"Regreso",desc:"Transfer y vuelta a casa.",activities:["Transfer","Aeropuerto","🏠"]}],
+  costs:{total:"$850.000",totalNote:"por persona · estimado",items:[{icon:"✈️",name:"Vuelo Mendoza – Floripa",note:"Ida y vuelta",amount:"$350.000"},{icon:"🚌",name:"Traslados internos",note:"Floripa–BC + excursiones",amount:"$60.000"},{icon:"🏠",name:"Alojamiento (9 noches)",note:"Por persona",amount:"$270.000"},{icon:"🍔",name:"Comida y bebidas",note:"Estimado x9 días",amount:"$90.000"},{icon:"🎡",name:"Boliche y salidas",note:"Estimado",amount:"$80.000"}]},
+  lodgings:[{name:"Airbnb Casa Floripa",badge:"air",loc:"📍 Lagoa da Conceição",desc:"Casa para 10 personas a 5 min de la playa. Pileta y asador.",price:"$65.000",priceNote:"/ persona / noche",link:"https://www.airbnb.com",img:"https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=200&q=80"},{name:"Apart Hotel BC Center",badge:"book",loc:"📍 Av. Atlântica, BC",desc:"Frente al mar. Vista espectacular. A 1 cuadra de Bond Bond.",price:"$78.000",priceNote:"/ persona / noche",link:"https://www.booking.com",img:"https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=200&q=80"}],
+  food:{budget:"~$22.000–30.000 por persona/día",places:["Ostradamus – frutos del mar en Floripa","Lagosteira do Rei – lagostas y cervejas","Box 32 – food market en BC","La Taperia – tapas y caipis","Água de coco en la playa 🥥"],tip:"💡 Llevá dólares o una billetera virtual (Wise / Nubank) para no pagar comisiones al cambiar pesos."},
+  nights:{places:["Bond Bond – el mega boliche de Latinoamérica 🔥","Green Valley – festival electrónico","Jurerê Beach – sunset parties","Toca do Urso – bar reggaeton"],tip:"💡 Comprá las entradas a Bond Bond online desde Argentina para conseguir descuentos y evitar filas."}},
 
-  /* ── NORTE ARGENTINO ────────────────────────────────────── */
-  {
-    id: "norte",
-    category: "mitad",
-    destination: "Norte Argentino",
-    country: "Argentina 🇦🇷",
-    emoji: "🏜️",
-    dates: "Julio / Agosto · 4 días",
-    image: "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=600&q=80",
-    tags: ["Cultura", "Naturaleza", "Sal"],
-    pricePerPerson: "$210.000",
-    currency: "ARS",
-    itinerary: [
-      { day: 1, title: "Llegada a Salta", desc: "Vuelo directo Mendoza–Salta. Llegamos, instalamos y recorremos el centro histórico: Cabildo, Catedral y la icónica Peatonal Alberdi.", activities: ["Cabildo histórico", "Catedral Basílica", "Peña folclórica"] },
-      { day: 2, title: "Salinas Grandes", desc: "Excursión de día completo a las Salinas Grandes (3.400 msnm). Las fotos más épicas del viaje garantizadas.", activities: ["Salinas Grandes", "Purmamarca", "Cerro de los 7 colores"] },
-      { day: 3, title: "Tilcara y la Quebrada", desc: "Bajamos por la Quebrada de Humahuaca, Patrimonio UNESCO. Pasamos por Tilcara, visitamos el Pucará y recorremos las artesanías.", activities: ["Pucará de Tilcara", "Museo folklórico", "Artesanías"] },
-      { day: 4, title: "Cafayate", desc: "Rumbo a las Bodegas de Cafayate, torrontés y los paisajes de la Quebrada de las Conchas.", activities: ["Bodega Nanni", "Garganta del Diablo", "Regreso a Salta"] }
-    ],
-    costs: {
-      total: "$210.000",
-      totalNote: "por persona · todo incluido estimado",
-      items: [
-        { icon: "✈️", name: "Vuelo Mendoza – Salta", note: "Ida y vuelta", amount: "$80.000" },
-        { icon: "🚐", name: "Excursiones y traslados", note: "Salinas + Quebrada + Cafayate", amount: "$40.000" },
-        { icon: "🏠", name: "Alojamiento (3 noches)", note: "Precio por persona", amount: "$45.000" },
-        { icon: "🍔", name: "Comida", note: "Estimado por día x3", amount: "$30.000" },
-        { icon: "🎡", name: "Actividades y salidas", note: "Estimado", amount: "$15.000" }
-      ]
-    },
-    lodgings: [
-      { name: "Hostel Salta Colonial", badge: "book", loc: "📍 Centro histórico", desc: "Patio colonial hermoso, habitaciones amplias. Ambiente muy festivo, ideal para conocer gente. Desayuno incluido.", price: "$18.000", priceNote: "/ persona / noche", link: "https://www.booking.com", img: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=200&q=80" },
-      { name: "Airbnb Casa en Tilcara", badge: "air", loc: "📍 Tilcara, Quebrada de Humahuaca", desc: "Casa rústica típica con patio y vista a los cerros. Cocina completa y fogón para las noches frías.", price: "$22.000", priceNote: "/ persona / noche", link: "https://www.airbnb.com", img: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=200&q=80" }
-    ],
-    food: {
-      budget: "~$8.000–12.000 por persona/día",
-      places: ["La Vieja Estación – empanadas salteñas clásicas", "El Solar del Convento – cocina norteña en ambiente colonial", "Mercado Central de Salta – locro y humitas", "Bodegas Etchart en Cafayate – empanada + vino", "Las Escaleras – vista al valle"],
-      tip: "💡 Las empanadas salteñas son las mejores del país. Probalas en el Mercado Central, son económicas y riquísimas."
-    },
-    nights: {
-      places: ["Peña La Casona del Molino – folclore en vivo", "Macondo Bar – cocktails con vista a la plaza", "Boliche La Vieja Usina – el más animado del centro"],
-      tip: "💡 Las peñas folclóricas son una experiencia única. Aunque no seas fanática del folclore, el ambiente y la comida valen muchísimo."
-    }
-  },
+  {id:"sur",category:"vacaciones",destination:"Sur Argentino",country:"Argentina 🇦🇷",emoji:"🏔️",dates:"Enero · 1ª quincena · 10 días",image:"https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80",tags:["Montaña","Lagos","Trekking"],pricePerPerson:"$620.000",
+  itinerary:[{day:1,title:"Llegada a Bariloche",desc:"Vuelo o bus. Primer helado y lago Nahuel Huapi.",activities:["Centro cívico","Helados Jauja","Lago"]},{day:2,title:"Circuito Chico",desc:"Cerro Campanario con vista 360° y Llao Llao.",activities:["Cerro Campanario","Llao Llao","Playa Serena"]},{day:3,title:"Cerro Catedral",desc:"Trekking y vistas desde los refugios.",activities:["Cerro Catedral","Trekking","Refugio Lynch"]},{day:4,title:"El Bolsón",desc:"Capital hippie patagónica. Feria artesanal y cerveza.",activities:["Feria regional","Lago Puelo","Cerveza artesanal"]},{day:5,title:"Kayak en los Lagos",desc:"Kayak grupal y tarde de fogón.",activities:["Kayak grupal","Lago Gutierrez","Fogón"]},{day:6,title:"Ruta de los 7 Lagos",desc:"Uno de los paisajes más increíbles del mundo.",activities:["Ruta 7 Lagos","Lago Traful","San Martín"]},{day:7,title:"San Martín de los Andes",desc:"El pueblo más lindo de la Patagonia.",activities:["Chapelco","Lago Lacar","Paseo en barco"]},{day:8,title:"Villa La Angostura",desc:"Los Arrayanes, árboles únicos en el mundo.",activities:["Los Arrayanes","Puerto Manzano","Boutiques"]},{day:9,title:"Día libre y compras",desc:"Chocolates, artesanías y cervezas para llevar.",activities:["Chocolates","Recuerdos","Relax"]},{day:10,title:"Regreso",desc:"Vuelta a Mendoza con el alma patagónica.",activities:["Transfer","Terminal","🏠"]}],
+  costs:{total:"$620.000",totalNote:"por persona · estimado",items:[{icon:"✈️",name:"Vuelo/Bus Mendoza – Bariloche",note:"Ida y vuelta",amount:"$180.000"},{icon:"🚐",name:"Excursiones y traslados",note:"7 Lagos, El Bolsón, kayak",amount:"$90.000"},{icon:"🏠",name:"Alojamiento (9 noches)",note:"Por persona",amount:"$200.000"},{icon:"🍔",name:"Comida",note:"Estimado x9 días",amount:"$90.000"},{icon:"🎡",name:"Actividades y salidas",note:"Estimado",amount:"$60.000"}]},
+  lodgings:[{name:"Airbnb Cabaña Bariloche",badge:"air",loc:"📍 Km 14, Lago Gutierrez",desc:"Cabaña para 10 con vista al lago. Fogón, asador y muelle privado.",price:"$56.000",priceNote:"/ persona / noche",link:"https://www.airbnb.com",img:"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&q=80"},{name:"Hostería Patagonika",badge:"book",loc:"📍 Centro de Bariloche",desc:"Desayuno incluido con vista al Nahuel Huapi. Muy bien ubicada.",price:"$42.000",priceNote:"/ persona / noche",link:"https://www.booking.com",img:"https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=200&q=80"}],
+  food:{budget:"~$18.000–25.000 por persona/día",places:["Heladería Jauja – famosa en todo el país","El Boliche de Alberto – parrilla patagónica","Fonda del Tío – fondue con vista al lago","Cervecería Blest – la más clásica","Mercado del Lago – productos regionales"],tip:"💡 Los chocolates más baratos están en la fábrica Rapa Nui. Llevate cajas para regalar (y para vos)."},
+  nights:{places:["Wilkenny Irish Pub – el más popular del centro","Cerebro Boliche – el clásico de Bariloche","Cervecería Blest – tardes artesanales","Fogones privados en la cabaña 🔥"],tip:"💡 Los fogones en la cabaña con vino patagónico son lo mejor del sur. Una noche imperdible."}},
 
-  /* ── BRASIL ─────────────────────────────────────────────── */
-  {
-    id: "brasil",
-    category: "vacaciones",
-    destination: "Brasil",
-    country: "Brasil 🇧🇷",
-    emoji: "🌴",
-    dates: "Enero · 1ª quincena · 10 días",
-    image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=600&q=80",
-    tags: ["Playa", "Fiesta", "Carnaval"],
-    pricePerPerson: "$850.000",
-    currency: "ARS",
-    itinerary: [
-      { day: 1, title: "Llegada a Floripa", desc: "Vuelo a Florianópolis. Instalación, caminata por el centro y primer atardecer en la isla." , activities: ["Check-in", "Centro histórico", "Atardecer"] },
-      { day: 2, title: "Praia Mole y Joaquina", desc: "Las playas más famosas de la isla. Surf, agua cristalina y las mejores personas. Noche en Lagoa da Conceição.", activities: ["Praia Mole", "Joaquina", "Lagoa da Conceição"] },
-      { day: 3, title: "Jurerê Internacional", desc: "La playa más exclusiva. Beach clubs, música electrónica y el atardecer más instagrameable.", activities: ["Jurerê Intl.", "Beach club", "Sunset"] },
-      { day: 4, title: "Bombinhas", desc: "Excursión a Bombinhas, aguas transparentes para snorkeling. Una de las mejores playas del sur de Brasil.", activities: ["Snorkeling", "Playa Bombas", "Paseo en barco"] },
-      { day: 5, title: "Día libre Floripa", desc: "Bairro de Santo Antônio de Lisboa para desayunar, feria de artesanías y tarde de relax.", activities: ["Sto. Antônio", "Feria artesanal", "Relax"] },
-      { day: 6, title: "Viaje a Balneário Camboriú", desc: "Bus a BC, la Las Vegas del sur de Brasil. Bond Bond, escala en el teleférico Unipraias.", activities: ["Teleférico", "BC center", "Noche en BC"] },
-      { day: 7, title: "Praia de Laranjeiras", desc: "Playa virginal a 20 min de BC. Agua verde esmeralda y poca gente. De vuelta, tarde en el shopping.", activities: ["Laranjeiras", "Paseo en barco", "Shopping"] },
-      { day: 8, title: "Bond Bond Night", desc: "La noche más esperada. Bond Bond, el boliche más famoso de Latinoamérica.", activities: ["Pre-party", "Bond Bond", "Amanecer"] },
-      { day: 9, title: "Último día de playa", desc: "Último sol, última água de coco y compras de souvenirs. Cena especial para cerrar el viaje.", activities: ["Playa central BC", "Souvenirs", "Cena grupal"] },
-      { day: 10, title: "Regreso", desc: "Transfer al aeropuerto y vuelta a casa con el corazón lleno.", activities: ["Transfer", "Aeropuerto", "🏠"] }
-    ],
-    costs: {
-      total: "$850.000",
-      totalNote: "por persona · todo incluido estimado",
-      items: [
-        { icon: "✈️", name: "Vuelo Mendoza – Floripa/BC", note: "Ida y vuelta", amount: "$350.000" },
-        { icon: "🚌", name: "Traslados internos", note: "Bus Floripa–BC y excursiones", amount: "$60.000" },
-        { icon: "🏠", name: "Alojamiento (9 noches)", note: "Precio por persona", amount: "$270.000" },
-        { icon: "🍔", name: "Comida y bebidas", note: "Estimado por día x9", amount: "$90.000" },
-        { icon: "🎡", name: "Actividades, boliche y salidas", note: "Estimado", amount: "$80.000" }
-      ]
-    },
-    lodgings: [
-      { name: "Airbnb Casa Floripa", badge: "air", loc: "📍 Lagoa da Conceição, Florianópolis", desc: "Casa amplia para 10 personas a 5 min de la playa. Cocina completa, pileta y asador. Ideal para grupos.", price: "$65.000", priceNote: "/ persona / noche", link: "https://www.airbnb.com", img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=200&q=80" },
-      { name: "Apart Hotel BC Center", badge: "book", loc: "📍 Av. Atlântica, Balneário Camboriú", desc: "Departamento frente al mar, 2 habitaciones. Vista espectacular. A 1 cuadra de Bond Bond.", price: "$78.000", priceNote: "/ persona / noche", link: "https://www.booking.com", img: "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=200&q=80" }
-    ],
-    food: {
-      budget: "~$22.000–30.000 por persona/día",
-      places: ["Ostradamus – frutos del mar en Floripa", "Lagosteira do Rei – lagostas y cervejas", "Box 32 – food market en BC", "La Taperia – tapas y caipis", "Agua de coco en la playa – obligatorio 🥥"],
-      tip: "💡 En Brasil conviene llevar dólares o reales para algunos lugares. El dólar va mejor que el peso argentino. Llevá una billetera virtual (Wise o Nubank) para no pagar comisiones."
-    },
-    nights: {
-      places: ["Bond Bond – el mega boliche de Latinoamérica (lo más esperado del viaje)", "Green Valley – festival de música electrónica", "Jurerê Beach – sunset parties en las playas", "Toca do Urso – bar de reggaeton en Floripa"],
-      tip: "💡 Bond Bond es impresionante pero conviene comprar las entradas online desde Argentina, suelen tener descuentos especiales y evitás filas."
-    }
-  },
-
-  /* ── SUR ARGENTINO ──────────────────────────────────────── */
-  {
-    id: "sur",
-    category: "vacaciones",
-    destination: "Sur Argentino",
-    country: "Argentina 🇦🇷",
-    emoji: "🏔️",
-    dates: "Enero · 1ª quincena · 10 días",
-    image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80",
-    tags: ["Montaña", "Lagos", "Trekking"],
-    pricePerPerson: "$620.000",
-    currency: "ARS",
-    itinerary: [
-      { day: 1, title: "Llegada a Bariloche", desc: "Vuelo o bus desde Mendoza. Llegamos a la ciudad del chocolate. Caminata por el centro, primer helado artesanal.", activities: ["Centro cívico", "Helados Jauja", "Lago Nahuel Huapi"] },
-      { day: 2, title: "Circuito Chico", desc: "El paseo clásico de Bariloche. Cerro Campanario y su vista 360°, Llao Llao y playa Serena.", activities: ["Cerro Campanario", "Hotel Llao Llao", "Playa Serena"] },
-      { day: 3, title: "Cerro Catedral", desc: "Trekking por el cerro o simplemente disfrutar las vistas desde los refugios de altura.", activities: ["Cerro Catedral", "Trekking", "Refugio Lynch"] },
-      { day: 4, title: "El Bolsón", desc: "Excursión a El Bolsón, la capital hippie patagónica. Feria artesanal increíble y cerveza artesanal.", activities: ["Feria regional", "Lago Puelo", "Cerveza artesanal"] },
-      { day: 5, title: "Kayak en los lagos", desc: "Salida grupal en kayak por el Lago Gutierrez. Tarde en la playa con fogón.", activities: ["Kayak grupal", "Lago Gutierrez", "Fogón"] },
-      { day: 6, title: "Viaje a San Martín de los Andes", desc: "Cruzamos por la Ruta de los 7 Lagos, uno de los paisajes más increíbles del mundo.", activities: ["Ruta 7 Lagos", "Lago Traful", "San Martín centro"] },
-      { day: 7, title: "San Martín y Chapelco", desc: "El pueblo más lindo de la Patagonia. Caminata por el cerro Chapelco y paseo en kayak por el Lacar.", activities: ["Chapelco", "Lago Lacar", "Paseo en barco"] },
-      { day: 8, title: "Villa La Angostura", desc: "Pueblo boutique y el Parque Nacional Los Arrayanes con los árboles únicos en el mundo.", activities: ["Los Arrayanes", "Puerto Manzano", "Boutiques"] },
-      { day: 9, title: "Día libre y compras", desc: "Último día para chocolates, artesanías, cervezas artesanales y fotos con los perros de trineo.", activities: ["Chocolates", "Recuerdos", "Relax"] },
-      { day: 10, title: "Regreso a casa", desc: "Vuelta a Mendoza con el alma patagónica.", activities: ["Transfer", "Aeropuerto/Terminal", "🏠"] }
-    ],
-    costs: {
-      total: "$620.000",
-      totalNote: "por persona · todo incluido estimado",
-      items: [
-        { icon: "✈️", name: "Vuelo / Bus Mendoza – Bariloche", note: "Ida y vuelta", amount: "$180.000" },
-        { icon: "🚐", name: "Excursiones y traslados", note: "7 Lagos, El Bolsón, kayak", amount: "$90.000" },
-        { icon: "🏠", name: "Alojamiento (9 noches)", note: "Precio por persona", amount: "$200.000" },
-        { icon: "🍔", name: "Comida", note: "Estimado por día x9", amount: "$90.000" },
-        { icon: "🎡", name: "Actividades y salidas", note: "Estimado", amount: "$60.000" }
-      ]
-    },
-    lodgings: [
-      { name: "Airbnb Cabaña Bariloche", badge: "air", loc: "📍 Km 14, Lago Gutierrez", desc: "Cabaña para 10 personas con vista directa al lago. Fogón, asador, muelle privado y montaña en tu ventana.", price: "$56.000", priceNote: "/ persona / noche", link: "https://www.airbnb.com", img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&q=80" },
-      { name: "Hostería Patagonika", badge: "book", loc: "📍 Centro de Bariloche", desc: "Hostería cálida y acogedora, desayuno incluido con vista al Nahuel Huapi. Muy bien ubicada.", price: "$42.000", priceNote: "/ persona / noche", link: "https://www.booking.com", img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=200&q=80" }
-    ],
-    food: {
-      budget: "~$18.000–25.000 por persona/día",
-      places: ["Heladería Jauja – famosa en todo el país", "El Boliche de Alberto – parrilla patagónica", "Fonda del Tío – fondue de queso con vista al lago", "Cervecería Blest – la más clásica de Bariloche", "Mercado del Lago – productos regionales"],
-      tip: "💡 Los chocolates más baratos están en la fábrica Rapa Nui. Llevate cajas para regalar y para vos (muuuchas)."
-    },
-    nights: {
-      places: ["Wilkenny Irish Pub – el más popular del centro", "Cerebro Boliche – el de toda la vida en Bariloche", "Cervecería Blest – tardes con cerveza artesanal", "Fogones privados en la cabaña – la mejor opción"],
-      tip: "💡 En enero las noches son largas y el clima es increíble. Los fogones en la cabaña con vino patagonico son lo mejor del sur."
-    }
-  },
-
-  /* ── COLOMBIA ────────────────────────────────────────────── */
-  {
-    id: "colombia",
-    category: "vacaciones",
-    destination: "Colombia",
-    country: "Colombia 🇨🇴",
-    emoji: "💃",
-    dates: "Enero · 1ª quincena · 10 días",
-    image: "https://images.unsplash.com/photo-1582001049946-fa1a4b0c8d15?w=600&q=80",
-    tags: ["Salsa", "Cultura", "Caribe"],
-    pricePerPerson: "$950.000",
-    currency: "ARS",
-    itinerary: [
-      { day: 1, title: "Llegada a Bogotá", desc: "Vuelo a Bogotá, la capital. Recorremos La Candelaria, el barrio histórico, y subimos a Monserrate.", activities: ["La Candelaria", "Monserrate", "Zona Rosa"] },
-      { day: 2, title: "Vuelo a Cartagena", desc: "Vuelo interno a Cartagena de Indias. La ciudad más romántica de Colombia. Primer paseo por la ciudad amurallada.", activities: ["Ciudad amurallada", "Getsemaní", "Atardecer"] },
-      { day: 3, title: "Islas del Rosario", desc: "Excursión de día completo en lancha a las Islas del Rosario. Agua turquesa, coral y el mejor snorkeling.", activities: ["Islas del Rosario", "Snorkeling", "Playa privada"] },
-      { day: 4, title: "Cartagena colonial", desc: "Tour por las murallas, el Castillo de San Felipe y las coloridas calles del centro. Tarde en el Laguito.", activities: ["Castillo San Felipe", "Murallas", "Laguito"] },
-      { day: 5, title: "Playa Blanca", desc: "La playa más hermosa de Colombia a 45 min de Cartagena. Arena blanca y agua verde. Hammocks en el mar.", activities: ["Playa Blanca", "Hammocks", "Ceviche"] },
-      { day: 6, title: "Vuelo a Medellín", desc: "Vuelo a la Ciudad de la Eterna Primavera. Llegamos, nos instalamos y recorremos El Poblado.", activities: ["El Poblado", "Parque Lleras", "Primer rumba"] },
-      { day: 7, title: "Metro Cable y Pablo", desc: "Subimos en el metrocable a los barrios altos. Visita al Museo Casa de la Memoria.", activities: ["Metro Cable", "Comunas", "Museo"] },
-      { day: 8, title: "Guatapé y El Peñol", desc: "Excursión al Peñol, la roca gigante con 740 escalones y vista a toda la región.", activities: ["El Peñol (740 escalones)", "Guatapé colorido", "Embalse"] },
-      { day: 9, title: "Shopping y rumba", desc: "El Hueco para compras, Centro Comercial El Tesoro y la noche de salsa más loca.", activities: ["El Hueco", "Shopping", "Salsa all night"] },
-      { day: 10, title: "Regreso", desc: "Vuelta a Mendoza pasando por Bogotá o directo.", activities: ["Aeropuerto", "Vuelta a casa", "🏠"] }
-    ],
-    costs: {
-      total: "$950.000",
-      totalNote: "por persona · todo incluido estimado",
-      items: [
-        { icon: "✈️", name: "Vuelo Mendoza – Bogotá/Cartagena", note: "Ida y vuelta", amount: "$420.000" },
-        { icon: "✈️", name: "Vuelos internos Colombia", note: "Cartagena–Medellín", amount: "$80.000" },
-        { icon: "🏠", name: "Alojamiento (9 noches)", note: "Precio por persona", amount: "$250.000" },
-        { icon: "🍔", name: "Comida y bebidas", note: "Estimado por día x9", amount: "$100.000" },
-        { icon: "🎡", name: "Excursiones y salidas", note: "Islas, Peñol, rumbas", amount: "$100.000" }
-      ]
-    },
-    lodgings: [
-      { name: "Airbnb Casa en Getsemaní", badge: "air", loc: "📍 Getsemaní, Cartagena", desc: "Casona colonial colorida, patio interior con hamacas, a 5 min caminando de la ciudad amurallada.", price: "$65.000", priceNote: "/ persona / noche", link: "https://www.airbnb.com", img: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=200&q=80" },
-      { name: "Airbnb Penthouse El Poblado", badge: "air", loc: "📍 El Poblado, Medellín", desc: "Penthouse moderno con rooftop y vista a las montañas. A 2 cuadras del Parque Lleras.", price: "$75.000", priceNote: "/ persona / noche", link: "https://www.airbnb.com", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=200&q=80" }
-    ],
-    food: {
-      budget: "~$20.000–28.000 por persona/día",
-      places: ["La Cevichería – el ceviche más famoso de Cartagena", "El Boliche – bandeja paisa auténtica en Medellín", "Café Velvet – desayunos hipster en El Poblado", "Mercado del Río – food court con todo tipo de comida", "Arepas con todo – en cualquier esquina 🌽"],
-      tip: "💡 Colombia tiene los mejores jugos naturales del mundo. Pedí 'jugo natural' en cualquier restaurant o tienda y te van a llenar de fruta fresca por muy poca plata."
-    },
-    nights: {
-      places: ["Parque Lleras – el corazón de la rumba en Medellín", "Café Havana – la mejor salsa de Cartagena", "El Eslabon Prendido – salsa brava con orquesta en vivo", "Calle del Embudo – bares en la ciudad amurallada"],
-      tip: "💡 En Colombia la rumba empieza tarde (11pm+) y termina con el sol. Descansá bien la tarde anterior. La salsa colombiana es otro nivel, tomá clases aunque sea una hora antes de salir."
-    }
-  }
+  {id:"colombia",category:"vacaciones",destination:"Colombia",country:"Colombia 🇨🇴",emoji:"💃",dates:"Enero · 1ª quincena · 10 días",image:"https://images.unsplash.com/photo-1582001049946-fa1a4b0c8d15?w=600&q=80",tags:["Salsa","Cultura","Caribe"],pricePerPerson:"$950.000",
+  itinerary:[{day:1,title:"Llegada a Bogotá",desc:"La Candelaria y Monserrate.",activities:["La Candelaria","Monserrate","Zona Rosa"]},{day:2,title:"Vuelo a Cartagena",desc:"La ciudad más romántica de Colombia.",activities:["Ciudad amurallada","Getsemaní","Atardecer"]},{day:3,title:"Islas del Rosario",desc:"Excursión en lancha. Agua turquesa y snorkeling.",activities:["Islas del Rosario","Snorkeling","Playa privada"]},{day:4,title:"Cartagena colonial",desc:"Castillo de San Felipe y murallas coloridas.",activities:["Castillo San Felipe","Murallas","Laguito"]},{day:5,title:"Playa Blanca",desc:"Arena blanca y agua verde. Hammocks en el mar.",activities:["Playa Blanca","Hammocks","Ceviche"]},{day:6,title:"Vuelo a Medellín",desc:"La Ciudad de la Eterna Primavera.",activities:["El Poblado","Parque Lleras","Primera rumba"]},{day:7,title:"Metro Cable",desc:"Vista increíble de toda la ciudad desde los barrios altos.",activities:["Metro Cable","Comunas","Museo"]},{day:8,title:"Guatapé y El Peñol",desc:"740 escalones y vista a toda la región.",activities:["El Peñol","Guatapé colorido","Embalse"]},{day:9,title:"Shopping y rumba",desc:"El Hueco y la noche de salsa más loca.",activities:["El Hueco","Shopping","Salsa all night"]},{day:10,title:"Regreso",desc:"Vuelta a Mendoza.",activities:["Aeropuerto","Vuelta a casa","🏠"]}],
+  costs:{total:"$950.000",totalNote:"por persona · estimado",items:[{icon:"✈️",name:"Vuelo Mendoza – Bogotá",note:"Ida y vuelta",amount:"$420.000"},{icon:"✈️",name:"Vuelos internos Colombia",note:"Cartagena – Medellín",amount:"$80.000"},{icon:"🏠",name:"Alojamiento (9 noches)",note:"Por persona",amount:"$250.000"},{icon:"🍔",name:"Comida y bebidas",note:"Estimado x9 días",amount:"$100.000"},{icon:"🎡",name:"Excursiones y salidas",note:"Islas, Peñol, rumbas",amount:"$100.000"}]},
+  lodgings:[{name:"Airbnb Casa en Getsemaní",badge:"air",loc:"📍 Getsemaní, Cartagena",desc:"Casona colonial con patio y hamacas. A 5 min de la ciudad amurallada.",price:"$65.000",priceNote:"/ persona / noche",link:"https://www.airbnb.com",img:"https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=200&q=80"},{name:"Penthouse El Poblado",badge:"air",loc:"📍 El Poblado, Medellín",desc:"Rooftop con vista a las montañas. A 2 cuadras del Parque Lleras.",price:"$75.000",priceNote:"/ persona / noche",link:"https://www.airbnb.com",img:"https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=200&q=80"}],
+  food:{budget:"~$20.000–28.000 por persona/día",places:["La Cevichería – el ceviche más famoso de Cartagena","El Boliche – bandeja paisa en Medellín","Café Velvet – desayunos hipster en El Poblado","Mercado del Río – food court con todo","Arepas en cualquier esquina 🌽"],tip:"💡 Colombia tiene los mejores jugos naturales del mundo. Pedí 'jugo natural' y te llenán de fruta fresca por poca plata."},
+  nights:{places:["Parque Lleras – el corazón de la rumba en Medellín","Café Havana – la mejor salsa de Cartagena","El Eslabon Prendido – salsa con orquesta en vivo","Calle del Embudo – bares en la ciudad amurallada"],tip:"💡 En Colombia la rumba empieza tarde (11pm+). Tomá clases de salsa aunque sea una hora, es otro nivel."}}
 ];
 
-/* ════════════════════════════════════════════════════════════
-   🎨  RENDER CARDS
-════════════════════════════════════════════════════════════ */
-function renderCards() {
-  const mitad = trips.filter(t => t.category === 'mitad');
-  const vacas = trips.filter(t => t.category === 'vacaciones');
+/* ════════ VOTES (localStorage) ════════ */
+const VK='vaj-votes-v3', SK='vaj-sel-v3';
+function loadV(){try{return JSON.parse(localStorage.getItem(VK))||{mitad:{vina:0,norte:0},vacaciones:{brasil:0,sur:0,colombia:0}}}catch{return{mitad:{vina:0,norte:0},vacaciones:{brasil:0,sur:0,colombia:0}}}}
+function saveV(v){localStorage.setItem(VK,JSON.stringify(v))}
+function loadS(){try{return JSON.parse(localStorage.getItem(SK))||{mitad:null,vacaciones:null}}catch{return{mitad:null,vacaciones:null}}}
+function saveS(s){localStorage.setItem(SK,JSON.stringify(s))}
 
-  document.getElementById('grid-mitad').innerHTML = mitad.map((t, i) => cardHTML(t, i)).join('');
-  document.getElementById('grid-vacaciones').innerHTML = vacas.map((t, i) => cardHTML(t, i)).join('');
+let votes=loadV(), sel=loadS(), pend={mitad:null,vacaciones:null};
+
+const vopts={
+  mitad:[{id:'vina',label:'Viña del Mar',emoji:'🌊'},{id:'norte',label:'Norte Argentino',emoji:'🏜️'}],
+  vacaciones:[{id:'brasil',label:'Brasil',emoji:'🌴'},{id:'sur',label:'Sur Argentino',emoji:'🏔️'},{id:'colombia',label:'Colombia',emoji:'💃'}]
+};
+
+function renderVote(cat){
+  const container=document.getElementById('opts-'+cat);
+  const opts=vopts[cat];
+  const cv=votes[cat];
+  const total=Object.values(cv).reduce((a,b)=>a+b,0);
+  const hasSel=!!sel[cat];
+
+  container.innerHTML=opts.map(o=>{
+    const cnt=cv[o.id]||0;
+    const pct=total>0?Math.round(cnt/total*100):0;
+    const isSel=sel[cat]===o.id||pend[cat]===o.id;
+    return`<div class="vote-opt${isSel?' sel':''}${hasSel?' voted-final':''}" id="opt-${cat}-${o.id}" onclick="pickOpt('${cat}','${o.id}')">
+      <div class="vot-top">
+        <div class="vot-nm"><span>${o.emoji}</span>${o.label}${sel[cat]===o.id?'<span class="my-vote-tag">✓ tu voto</span>':''}</div>
+        <div class="vot-count">${cnt} ${cnt===1?'voto':'votos'}</div>
+      </div>
+      <div class="vot-bar-bg"><div class="vot-bar-fill" style="width:${pct}%"></div></div>
+    </div>`;
+  }).join('');
+
+  const note=document.getElementById('note-'+cat);
+  note.textContent=total===0?'Todavía no hay votos. ¡Sé la primera!':total+' '+(total===1?'voto':'votos')+' en total';
+
+  const btn=document.getElementById('btn-'+cat);
+  if(hasSel){btn.disabled=true;btn.textContent='✓ Ya votaste'}
+  else{btn.disabled=false;btn.textContent='Confirmar voto'}
 }
 
-function cardHTML(t, i) {
-  return `
-    <div class="trip-card" style="animation-delay:${i * 0.1}s" onclick="openTrip('${t.id}')">
-      <div class="card-img-wrap">
-        <img src="${t.image}" alt="${t.destination}" loading="lazy" />
-        <div class="card-tag">${t.country}</div>
-        <div class="card-emoji">${t.emoji}</div>
-      </div>
-      <div class="card-body">
-        <h3 class="card-dest">${t.destination}</h3>
-        <div class="card-dates">${t.dates}</div>
-        <div class="card-pills">
-          ${t.tags.map(tag => `<span class="card-pill">${tag}</span>`).join('')}
-        </div>
-        <div class="card-price-row">
-          <div>
-            <div class="card-price-label">DESDE</div>
-            <div class="card-price">${t.pricePerPerson}</div>
-          </div>
-          <div class="card-btn">Ver todo <span>→</span></div>
-        </div>
-      </div>
-    </div>
-  `;
+function pickOpt(cat,id){
+  if(sel[cat])return;
+  pend[cat]=id;
+  renderVote(cat);
 }
 
-/* ════════════════════════════════════════════════════════════
-   🔍  FILTER
-════════════════════════════════════════════════════════════ */
-function filterCategory(cat, btn) {
-  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
+function submitVote(cat){
+  if(sel[cat])return;
+  const ch=pend[cat];
+  if(!ch){alert('Seleccioná un destino primero ✈️');return}
+  votes[cat][ch]++;
+  sel[cat]=ch;
+  saveV(votes);saveS(sel);
+  renderVote(cat);
+}
 
-  const mitadSection = document.getElementById('cat-mitad');
-  const vacasSection = document.getElementById('cat-vacaciones');
-
-  if (cat === 'all') {
-    mitadSection.classList.remove('hidden');
-    vacasSection.classList.remove('hidden');
-  } else if (cat === 'mitad') {
-    mitadSection.classList.remove('hidden');
-    vacasSection.classList.add('hidden');
-  } else {
-    mitadSection.classList.add('hidden');
-    vacasSection.classList.remove('hidden');
+function resetVote(cat){
+  if(sel[cat]){
+    votes[cat][sel[cat]]=Math.max(0,votes[cat][sel[cat]]-1);
+    sel[cat]=null;pend[cat]=null;
+    saveV(votes);saveS(sel);
+    renderVote(cat);
   }
 }
 
-/* ════════════════════════════════════════════════════════════
-   📖  MODAL
-════════════════════════════════════════════════════════════ */
-let currentTrip = null;
+/* ════════ RENDER CARDS ════════ */
+function renderCards(){
+  ['mitad','vacaciones'].forEach(cat=>{
+    const grid=document.getElementById('grid-'+cat);
+    const items=trips.filter(t=>t.category===cat);
+    grid.innerHTML=items.map((t,i)=>`
+      <div class="trip-card" style="animation-delay:${i*.08}s" onclick="openTrip('${t.id}')">
+        <div class="card-th">
+          <img src="${t.image}" alt="${t.destination}" loading="lazy"/>
+          <div class="card-ctry">${t.country}</div>
+          <div class="card-emo">${t.emoji}</div>
+        </div>
+        <div class="card-bd">
+          <h3 class="card-dest">${t.destination}</h3>
+          <div class="card-dates">📅 ${t.dates}</div>
+          <div class="card-tags">${t.tags.map(tg=>`<span class="ctag">${tg}</span>`).join('')}</div>
+          <div class="card-bot">
+            <div><div class="card-lbl">DESDE</div><div class="card-price">${t.pricePerPerson}</div></div>
+            <div class="card-cta">Ver todo <span>→</span></div>
+          </div>
+        </div>
+      </div>`).join('');
+  });
+}
 
-function openTrip(id) {
-  currentTrip = trips.find(t => t.id === id);
-  if (!currentTrip) return;
-
-  const t = currentTrip;
-
-  // Header
-  document.getElementById('modal-img').src = t.image;
-  document.getElementById('modal-img').alt = t.destination;
-  document.getElementById('modal-title').textContent = t.destination;
-  document.getElementById('modal-cat-tag').textContent =
-    t.category === 'mitad' ? '☀️ Mitad de Año' : '🌊 Vacaciones';
-
-  // Reset tabs
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+/* ════════ MODAL ════════ */
+function openTrip(id){
+  const t=trips.find(x=>x.id===id);if(!t)return;
+  document.getElementById('m-img').src=t.image;
+  document.getElementById('m-title').textContent=t.destination;
+  document.getElementById('m-chip').textContent=t.category==='mitad'?'☀️ Mitad de Año':'🌊 Vacaciones';
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
   document.querySelector('.tab-btn').classList.add('active');
   document.getElementById('tab-itinerario').classList.add('active');
-
-  // Fill panels
-  fillItinerario(t);
-  fillCostos(t);
-  fillAlojamiento(t);
-  fillComida(t);
-  fillSalidas(t);
-
-  // Open
-  document.getElementById('modal-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
+  fillModal(t);
+  document.getElementById('modal-ov').classList.add('open');
+  document.body.style.overflow='hidden';
 }
-
-function closeModal() {
-  document.getElementById('modal-overlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function handleOverlayClick(e) {
-  if (e.target === document.getElementById('modal-overlay')) closeModal();
-}
-
-function switchTab(name, btn) {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+function closeModal(){document.getElementById('modal-ov').classList.remove('open');document.body.style.overflow='';}
+function handleOv(e){if(e.target.id==='modal-ov')closeModal();}
+function switchTab(n,btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
   btn.classList.add('active');
-  document.getElementById('tab-' + name).classList.add('active');
+  document.getElementById('tab-'+n).classList.add('active');
 }
-
-/* ─── Fill: Itinerario ─────────────────────────────────────── */
-function fillItinerario(t) {
-  const el = document.getElementById('tab-itinerario');
-  el.innerHTML = `
+function fillModal(t){
+  document.getElementById('tab-itinerario').innerHTML=`
     <div class="info-grid">
-      <div class="info-card">
-        <div class="info-card-icon">📅</div>
-        <div class="info-card-label">Temporada</div>
-        <div class="info-card-value">${t.dates}</div>
-      </div>
-      <div class="info-card">
-        <div class="info-card-icon">👯‍♀️</div>
-        <div class="info-card-label">Personas</div>
-        <div class="info-card-value">10 amigas</div>
-      </div>
+      <div class="info-card"><div class="ic-ico">📅</div><div class="ic-lbl">Fechas</div><div class="ic-val">${t.dates}</div></div>
+      <div class="info-card"><div class="ic-ico">👯‍♀️</div><div class="ic-lbl">Personas</div><div class="ic-val">10 amigas</div></div>
     </div>
-    ${t.itinerary.map(d => `
-      <div class="itinerary-day">
-        <div class="day-num">${d.day}</div>
-        <div class="day-content">
-          <div class="day-title">${d.title}</div>
-          <div class="day-desc">${d.desc}</div>
-          <div class="day-activities">
-            ${d.activities.map(a => `<span class="activity-tag">✦ ${a}</span>`).join('')}
-          </div>
-        </div>
-      </div>
-    `).join('')}
-  `;
+    ${t.itinerary.map(d=>`<div class="iday"><div class="dnum">${d.day}</div><div><div class="dttl">${d.title}</div><div class="ddsc">${d.desc}</div><div class="dacts">${d.activities.map(a=>`<span class="atag">✦ ${a}</span>`).join('')}</div></div></div>`).join('')}`;
+  document.getElementById('tab-costos').innerHTML=`
+    <div class="cost-ban"><div><div class="cl">Total estimado</div><div class="cv">${t.costs.total}</div><div class="cn">${t.costs.totalNote}</div></div><div style="font-size:2rem;opacity:.55">💸</div></div>
+    ${t.costs.items.map(i=>`<div class="crow"><div class="crowl"><div class="cico">${i.icon}</div><div><div class="cnm">${i.name}</div><div class="cnt">${i.note}</div></div></div><div class="camt">${i.amount}</div></div>`).join('')}
+    <div style="margin-top:16px;padding:12px 15px;background:var(--bg2);border-radius:var(--rs);font-size:.77rem;color:var(--textl);line-height:1.6">⚠️ <strong style="color:var(--text)">Nota:</strong> Precios estimados en pesos argentinos. Varían según fecha de compra. ¡Conviene reservar los vuelos cuanto antes!</div>`;
+  document.getElementById('tab-alojamiento').innerHTML=t.lodgings.map(l=>`
+    <div class="lodge-c"><img class="lodge-img" src="${l.img}" alt="${l.name}" loading="lazy"/><div class="lodge-bd"><div class="lbadge ${l.badge==='air'?'ba':'bb'}">${l.badge==='air'?'🏠 Airbnb':'📋 Booking'}</div><div class="lnm">${l.name}</div><div class="lloc">${l.loc}</div><div class="ldsc">${l.desc}</div><div class="lft"><div class="lprice">${l.price} <span>${l.priceNote}</span></div><a class="llink" href="${l.link}" target="_blank">Ver →</a></div></div></div>`).join('');
+  document.getElementById('tab-comida').innerHTML=`
+    <div class="info-card" style="margin-bottom:16px"><div class="ic-ico">💰</div><div class="ic-lbl">Presupuesto comida</div><div class="ic-val" style="font-size:.96rem">${t.food.budget}</div></div>
+    <div class="rec-c" style="margin-bottom:13px"><h4>🍽️ Lugares recomendados</h4><ul>${t.food.places.map(p=>`<li>${p}</li>`).join('')}</ul></div>
+    <div class="tip">${t.food.tip}</div>`;
+  document.getElementById('tab-salidas').innerHTML=`
+    <div class="rec-c" style="margin-bottom:13px"><h4>🍹 Bares y boliches</h4><ul>${t.nights.places.map(p=>`<li>${p}</li>`).join('')}</ul></div>
+    <div class="tip">${t.nights.tip}</div>`;
 }
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 
-/* ─── Fill: Costos ─────────────────────────────────────────── */
-function fillCostos(t) {
-  const el = document.getElementById('tab-costos');
-  el.innerHTML = `
-    <div class="cost-total-banner">
-      <div>
-        <div class="cost-total-label">Total estimado</div>
-        <div class="cost-total-amount">${t.costs.total}</div>
-        <div class="cost-total-note">${t.costs.totalNote}</div>
-      </div>
-      <div class="cost-total-icon">💸</div>
-    </div>
-    ${t.costs.items.map(item => `
-      <div class="cost-row">
-        <div class="cost-row-left">
-          <div class="cost-icon">${item.icon}</div>
-          <div>
-            <div class="cost-name">${item.name}</div>
-            <div class="cost-note">${item.note}</div>
-          </div>
-        </div>
-        <div class="cost-amount">${item.amount}</div>
-      </div>
-    `).join('')}
-    <div style="margin-top:20px; padding: 14px 18px; background: var(--bg2); border-radius: var(--radius-sm); font-size:0.8rem; color:var(--text-light); line-height:1.6;">
-      ⚠️ <strong style="color:var(--text)">Importante:</strong> Estos costos son estimaciones en pesos argentinos. Los precios finales pueden variar según la fecha de compra y tipo de cambio. ¡Conviene reservar vuelos cuanto antes!
-    </div>
-  `;
-}
-
-/* ─── Fill: Alojamiento ────────────────────────────────────── */
-function fillAlojamiento(t) {
-  const el = document.getElementById('tab-alojamiento');
-  el.innerHTML = t.lodgings.map(l => `
-    <div class="lodging-card">
-      <img class="lodging-img" src="${l.img}" alt="${l.name}" loading="lazy" />
-      <div class="lodging-body">
-        <div class="lodging-badge ${l.badge === 'air' ? 'badge-air' : 'badge-book'}">
-          ${l.badge === 'air' ? '🏠 Airbnb' : '📋 Booking'}
-        </div>
-        <div class="lodging-name">${l.name}</div>
-        <div class="lodging-loc">${l.loc}</div>
-        <div class="lodging-desc">${l.desc}</div>
-        <div class="lodging-footer">
-          <div>
-            <div class="lodging-price">${l.price} <span>${l.priceNote}</span></div>
-          </div>
-          <a class="lodging-link" href="${l.link}" target="_blank">Ver →</a>
-        </div>
-      </div>
-    </div>
-  `).join('');
-}
-
-/* ─── Fill: Comida ─────────────────────────────────────────── */
-function fillComida(t) {
-  const el = document.getElementById('tab-comida');
-  el.innerHTML = `
-    <div class="info-card" style="margin-bottom:20px;">
-      <div class="info-card-icon">💰</div>
-      <div class="info-card-label">Presupuesto comida</div>
-      <div class="info-card-value" style="font-size:1rem">${t.food.budget}</div>
-    </div>
-    <div class="recom-card" style="margin-bottom:16px;">
-      <h4>🍽️ Lugares recomendados</h4>
-      <ul>
-        ${t.food.places.map(p => `<li>${p}</li>`).join('')}
-      </ul>
-    </div>
-    <div class="tip-box">${t.food.tip}</div>
-  `;
-}
-
-/* ─── Fill: Salidas ────────────────────────────────────────── */
-function fillSalidas(t) {
-  const el = document.getElementById('tab-salidas');
-  el.innerHTML = `
-    <div class="recom-card" style="margin-bottom:16px;">
-      <h4>🍹 Bares y boliches</h4>
-      <ul>
-        ${t.nights.places.map(p => `<li>${p}</li>`).join('')}
-      </ul>
-    </div>
-    <div class="tip-box">${t.nights.tip}</div>
-  `;
-}
-
-/* ════════════════════════════════════════════════════════════
-   🚀  INIT
-════════════════════════════════════════════════════════════ */
+/* ════════ INIT ════════ */
 renderCards();
-
-// Cerrar con tecla Escape
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeModal();
-});
-
+renderVote('mitad');
+renderVote('vacaciones');
 </script>
 </body>
 </html>
