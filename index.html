@@ -94,6 +94,7 @@ nav{
 
 /* ── TRIPS SECTION ──────────── */
 .trips-sec{padding:80px 48px}
+.trips-inner{max-width:1280px;margin:0 auto}
 
 .cat-block{margin-bottom:72px}
 .cat-hd{display:flex;align-items:center;gap:18px;margin-bottom:32px;flex-wrap:wrap}
@@ -103,7 +104,7 @@ nav{
 .cat-ln{flex:1;height:1px;background:var(--sand);min-width:20px}
 
 /* ── CARDS GRID ─────────────── */
-.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:22px;margin-bottom:32px}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px;margin-bottom:32px}
 
 .trip-card{background:var(--white);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);cursor:pointer;transition:transform .3s,box-shadow .3s;animation:cin .5s both}
 .trip-card:hover{transform:translateY(-8px);box-shadow:var(--shl)}
@@ -125,7 +126,7 @@ nav{
 .trip-card:hover .card-cta{gap:9px}
 
 /* ── VOTE CARD ──────────────── */
-.vote-card{background:var(--white);border-radius:var(--r);padding:32px 36px;box-shadow:var(--sh);border:1.5px solid var(--sand)}
+.vote-card{background:var(--white);border-radius:var(--r);padding:32px 36px;box-shadow:var(--sh);border:1.5px solid var(--sand);max-width:860px}
 
 .vote-top-row{display:flex;align-items:flex-start;gap:14px;margin-bottom:24px}
 .vote-ico{width:48px;height:48px;flex-shrink:0;background:var(--bg2);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:1.5rem}
@@ -245,6 +246,10 @@ footer strong{color:rgba(240,235,224,.80)}
   .trips-sec{padding:64px 28px}
   nav{padding:14px 28px}
 }
+@media(min-width:1400px){
+  .trips-sec{padding:80px 64px}
+  .hero-ct{padding:0 80px 80px}
+}
 @media(max-width:640px){
   nav{padding:13px 18px}
   .nav-links{display:none}
@@ -279,7 +284,7 @@ footer strong{color:rgba(240,235,224,.80)}
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Viajes <em>& amigas</em></div>
+  <div class="nav-logo">Viajes</em></div>
   <ul class="nav-links">
     <li><a href="#viajes">Destinos</a></li>
     <li><a href="#vote-mitad">Votar</a></li>
@@ -309,11 +314,12 @@ footer strong{color:rgba(240,235,224,.80)}
 
 <!-- TRIPS -->
 <div class="trips-sec" id="viajes">
+<div class="trips-inner">
 
   <!-- MITAD DE AÑO -->
   <div class="cat-block">
     <div class="cat-hd">
-      <div class="cat-badge">☀️ Julio – Agosto</div>
+      <div class="cat-badge"> Julio – Agosto</div>
       <h2 class="cat-nm"><em>Mitad</em> de año</h2>
       <div class="cat-ln"></div>
     </div>
@@ -354,7 +360,7 @@ footer strong{color:rgba(240,235,224,.80)}
   <!-- VACACIONES -->
   <div class="cat-block">
     <div class="cat-hd">
-      <div class="cat-badge">🌊 Enero · 1ª quincena</div>
+      <div class="cat-badge"> Enero · 1ª quincena</div>
       <h2 class="cat-nm"><em>Vacaciones</em></h2>
       <div class="cat-ln"></div>
     </div>
@@ -391,7 +397,8 @@ footer strong{color:rgba(240,235,224,.80)}
       <div class="vote-note" id="note-vacaciones"></div>
     </div>
   </div>
-</div>
+</div><!-- /trips-inner -->
+</div><!-- /trips-sec -->
 
 <footer><strong>Viajes & Amigas</strong> &nbsp;·&nbsp; Mendoza, Argentina &nbsp;·&nbsp; 2025 – 2026</footer>
 
@@ -408,11 +415,11 @@ footer strong{color:rgba(240,235,224,.80)}
       </div>
     </div>
     <div class="modal-tabs">
-      <button class="tab-btn active" onclick="switchTab('itinerario',this)">📅 Itinerario</button>
+      <button class="tab-btn active" onclick="switchTab('itinerario',this)"> Itinerario</button>
       <button class="tab-btn" onclick="switchTab('costos',this)">💸 Costos</button>
-      <button class="tab-btn" onclick="switchTab('alojamiento',this)">🏠 Alojamiento</button>
-      <button class="tab-btn" onclick="switchTab('comida',this)">🍽️ Comida</button>
-      <button class="tab-btn" onclick="switchTab('salidas',this)">🍹 Salidas</button>
+      <button class="tab-btn" onclick="switchTab('alojamiento',this)"> Alojamiento</button>
+      <button class="tab-btn" onclick="switchTab('comida',this)"> Comida</button>
+      <button class="tab-btn" onclick="switchTab('salidas',this)"> Salidas</button>
     </div>
     <div class="modal-body">
       <div class="tab-panel active" id="tab-itinerario"></div>
@@ -438,8 +445,8 @@ const trips=[
      {day:4,title:"Regreso",desc:"Feria artesanal y vuelta a Mendoza.",activities:["Feria artesanal","Souvenirs","🏠"]}
    ],
    costs:{total:"$280.000",totalNote:"por persona · estimado",items:[
-     {icon:"✈️",name:"Vuelo Mendoza – Santiago",note:"Ida y vuelta",amount:"$95.000"},
-     {icon:"🚌",name:"Bus Santiago – Viña",note:"Ida y vuelta",amount:"$18.000"},
+     {,name:"Vuelo Mendoza – Santiago",note:"Ida y vuelta",amount:"$95.000"},
+     {icon:"",name:"Bus Santiago – Viña",note:"Ida y vuelta",amount:"$18.000"},
      {icon:"🏠",name:"Alojamiento 3 noches",note:"Por persona",amount:"$90.000"},
      {icon:"🍔",name:"Comida",note:"Estimado x3 días",amount:"$45.000"},
      {icon:"🎡",name:"Actividades y salidas",note:"Estimado",amount:"$32.000"}
